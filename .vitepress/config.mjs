@@ -85,7 +85,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the GPL-3.0 License.',
-      copyright: 'Copyright 2026 wpperformly'
+      copyright: 'Copyright 2026 SendGrail'
     },
     search: {
       provider: 'local'
