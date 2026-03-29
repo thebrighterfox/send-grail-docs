@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'SendGrail',
   description: 'Fix WordPress email delivery with reliable SMTP connections',
+  base: '/',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
