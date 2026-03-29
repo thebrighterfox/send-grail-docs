@@ -1,6 +1,11 @@
 import DefaultTheme from 'vitepress/theme'
+import HomeHero from './HomeHero.vue'
 import './custom.css'
+import './home.css'
 
 export default {
   extends: DefaultTheme,
+  enhanceApp({ app }) {
+    app.component('HomeHero', HomeHero)
+  },
 }
