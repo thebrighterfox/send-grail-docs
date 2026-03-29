@@ -35,10 +35,6 @@ Know when recipients open your emails and which links they click. Tracking data 
 
 Route emails through different SMTP connections based on the sender address, recipient address, or domain. For example, send transactional emails through SendGrid and marketing emails through Mailgun.
 
-### One-Click Migration
-
-Switching from another SMTP plugin? SendGrail auto-detects settings from WP Mail SMTP, Post SMTP, FluentSMTP, and Easy WP SMTP, then imports them in one click. Your original settings are preserved.
-
 ### Weekly Reports
 
 Receive a scheduled email summary with delivery statistics, failure counts, and engagement metrics. Configure which day and email address receives the report.

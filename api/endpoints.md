@@ -619,58 +619,6 @@ Skip the setup wizard. The wizard will not appear again, but `needs_setup` will 
 
 ---
 
-## Migration
-
-### <span class="api-method get">GET</span> `/migration/detect`
-
-Detect installed SMTP plugins whose settings can be imported.
-
-**Example Response:**
-
-```json
-{
-  "success": true,
-  "data": {
-    "detected": [
-      {
-        "plugin": "wp-mail-smtp",
-        "name": "WP Mail SMTP",
-        "active": true
-      }
-    ]
-  }
-}
-```
-
----
-
-### <span class="api-method post">POST</span> `/migration/import`
-
-Import settings from a detected SMTP plugin.
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `plugin` | `string` | Yes | Plugin slug to import from |
-
-Supported values for `plugin`:
-
-| Slug | Plugin |
-|------|--------|
-| `wp-mail-smtp` | WP Mail SMTP |
-| `post-smtp` | Post SMTP |
-| `fluent-smtp` | FluentSMTP |
-| `easy-wp-smtp` | Easy WP SMTP |
-
-**Example Request:**
-
-```json
-{
-  "plugin": "wp-mail-smtp"
-}
-```
-
----
-
 ## Email Routes
 
 ### <span class="api-method get">GET</span> `/email-routes`

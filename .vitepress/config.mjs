@@ -34,7 +34,6 @@ export default defineConfig({
             { text: 'What is SendGrail?', link: '/guide/what-is-sendgrail' },
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Setup Wizard', link: '/guide/setup-wizard' },
-            { text: 'Migration', link: '/guide/migration' },
           ]
         },
         {

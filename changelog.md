@@ -14,8 +14,7 @@ All notable changes to SendGrail are documented on this page.
 - **Open Tracking** -- Track email opens via an invisible tracking pixel injected into HTML emails.
 - **Click Tracking** -- Track link clicks by routing through a tracking endpoint before redirecting to the original URL.
 - **Smart Routing** -- Route emails through different SMTP connections based on sender address, recipient, or domain rules.
-- **Setup Wizard** -- Guided five-step wizard for first-time configuration with automatic provider detection and credential validation.
-- **One-Click Migration** -- Import SMTP settings from WP Mail SMTP, Post SMTP, FluentSMTP, and Easy WP SMTP with a single click.
+- **Setup Wizard** -- Guided four-step wizard for first-time configuration with automatic provider detection and credential validation.
 - **Test Email** -- Send test emails directly from the connection management interface to verify credentials and delivery.
 - **Connection Validation** -- Validate SMTP credentials at save time with clear error reporting.
 - **Failure Notifications** -- Receive email alerts when delivery fails through all configured connections.

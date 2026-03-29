@@ -28,7 +28,7 @@ features:
     details: Track when recipients open your emails and which links they click. Monitor engagement directly from your WordPress dashboard.
   - icon: "\U0001F9ED"
     title: Setup Wizard
-    details: Get up and running in under two minutes. The guided wizard detects existing SMTP plugins and migrates your settings automatically.
+    details: Get up and running in under two minutes. The guided wizard walks you through provider selection, credential entry, and a test email.
   - icon: "\U0001F4CA"
     title: Weekly Reports
     details: Receive a weekly email summary of delivery stats, failures, and engagement metrics. Stay informed without logging into the dashboard.

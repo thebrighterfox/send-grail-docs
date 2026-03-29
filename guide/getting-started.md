@@ -19,13 +19,12 @@ This guide walks you through installing SendGrail and sending your first authent
 
 ## First-Time Setup
 
-After activation, you will be automatically redirected to the **Setup Wizard**. The wizard guides you through five steps:
+After activation, you will be automatically redirected to the **Setup Wizard**. The wizard guides you through four steps:
 
 1. **Welcome** -- Overview of what SendGrail does.
-2. **Migration** -- Auto-detects settings from other SMTP plugins (if any).
-3. **Configure** -- Pick your SMTP provider and enter credentials.
-4. **Test** -- Send a test email to verify everything works.
-5. **Done** -- Confirmation that your site is ready.
+2. **Configure** -- Pick your SMTP provider and enter credentials.
+3. **Test** -- Send a test email to verify everything works.
+4. **Done** -- Confirmation that your site is ready.
 
 ::: tip
 If you prefer to skip the wizard, click "Skip" on the welcome screen. You can always configure connections manually from the dashboard.
