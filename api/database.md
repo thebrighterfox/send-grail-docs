@@ -12,7 +12,7 @@ SendGrail creates four custom database tables to store connection configurations
 | `wp_sendgrail_email_routes` | Conditional email routing rules |
 
 ::: info
-Migrations run automatically on plugin activation and on version updates. The current database schema version is tracked in the WordPress options table under the key `sendgrail_db_version`.
+Migrations run automatically on plugin activation. Tables are created if they do not already exist.
 :::
 
 ---
@@ -188,12 +188,3 @@ wp_sendgrail_email_logs
 Foreign key constraints are not enforced at the database level (for compatibility with all MySQL/MariaDB versions). Referential integrity is maintained at the application layer. Deleting a connection will not cascade-delete its logs or routes.
 :::
 
-## Version Tracking
-
-The database schema version is stored as a WordPress option:
-
-```php
-get_option('sendgrail_db_version'); // e.g., "1.0.0"
-```
-
-Migrations are executed automatically when SendGrail detects that the stored version is lower than the plugin's current version. This check runs on every admin page load via the `plugins_loaded` hook.
