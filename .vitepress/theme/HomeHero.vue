@@ -152,8 +152,8 @@
             Get Started
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="/api/endpoints" class="sg-btn sg-btn--ghost">
-            API Reference
+          <a href="/features/connections" class="sg-btn sg-btn--ghost">
+            Explore Features
           </a>
         </div>
       </div>
@@ -164,7 +164,7 @@
 <script setup>
 const stats = [
   { value: '13+', label: 'SMTP Providers' },
-  { value: '40+', label: 'REST API Endpoints' },
+  { value: 'Smart', label: 'Email Routing' },
   { value: 'AES-256', label: 'Credential Encryption' },
   { value: '100%', label: 'Free & Open Source' },
 ]

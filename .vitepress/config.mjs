@@ -17,7 +17,6 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Features', link: '/features/connections' },
-      { text: 'API', link: '/api/endpoints' },
       {
         text: 'v1.0.0',
         items: [
@@ -33,7 +32,6 @@ export default defineConfig({
           items: [
             { text: 'What is SendGrail?', link: '/guide/what-is-sendgrail' },
             { text: 'Getting Started', link: '/guide/getting-started' },
-            { text: 'Setup Wizard', link: '/guide/setup-wizard' },
           ]
         },
         {
@@ -68,16 +66,6 @@ export default defineConfig({
           items: [
             { text: 'Failure Alerts', link: '/features/failure-alerts' },
             { text: 'Weekly Summaries', link: '/features/weekly-summaries' },
-          ]
-        },
-      ],
-      '/api/': [
-        {
-          text: 'API Reference',
-          items: [
-            { text: 'Endpoints', link: '/api/endpoints' },
-            { text: 'Hooks & Filters', link: '/api/hooks' },
-            { text: 'Database Schema', link: '/api/database' },
           ]
         },
       ],

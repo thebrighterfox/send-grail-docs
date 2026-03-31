@@ -17,20 +17,43 @@ This guide walks you through installing SendGrail and sending your first authent
 3. Choose the zip file and click **Install Now**.
 4. Click **Activate**.
 
-## First-Time Setup
+## Setup Wizard
 
-After activation, you will be automatically redirected to the **Setup Wizard**. The wizard guides you through four steps:
-
-1. **Welcome** -- Overview of what SendGrail does.
-2. **Configure** -- Pick your SMTP provider and enter credentials.
-3. **Test** -- Send a test email to verify everything works.
-4. **Done** -- Confirmation that your site is ready.
+After activation, you will be automatically redirected to the **Setup Wizard**. It takes under two minutes to complete.
 
 ::: tip
 If you prefer to skip the wizard, click "Skip" on the welcome screen. You can always configure connections manually from the dashboard.
 :::
 
-For a detailed breakdown of each wizard step, see the [Setup Wizard](/guide/setup-wizard) page.
+### Step 1: Welcome
+
+The welcome screen introduces SendGrail and outlines what the wizard will configure. Click **Continue** to proceed, or **Skip** to go directly to the dashboard.
+
+### Step 2: Configure
+
+1. **Select a provider** from the dropdown (Gmail, SendGrid, Amazon SES, etc.). The host, port, and encryption fields are auto-filled.
+2. **Enter your credentials:**
+   - From Email
+   - From Name
+   - SMTP Username
+   - SMTP Password (or API key, depending on the provider)
+3. Click **Save**.
+
+::: warning
+For providers like Gmail, Yahoo, and Zoho Mail, you must use an **App Password** if two-factor authentication is enabled. Your regular account password will not work.
+:::
+
+### Step 3: Test
+
+Enter a recipient email address and click **Send Test Email**. A success message confirms your connection is working. If it fails, you can go back to Step 2 to correct your settings.
+
+### Step 4: Done
+
+Setup is complete. You'll see a summary of the connection you created, a link to the dashboard, and quick links to configure email logging, fallback connections, and notifications.
+
+::: info
+If you ever need to run the wizard again, navigate to `#/setup-wizard` from the SendGrail admin page.
+:::
 
 ## Creating a Connection Manually
 
