@@ -131,7 +131,7 @@
       <div class="sg-features__header">
         <span class="sg-features__label">Integrations</span>
         <h2 class="sg-features__title">Works with your favorite SMTP service</h2>
-        <p class="sg-features__subtitle">Pre-configured settings for 13 providers. Or bring your own SMTP server.</p>
+        <p class="sg-features__subtitle">Pre-configured settings for 17 providers. Or bring your own SMTP server.</p>
       </div>
       <div class="sg-providers__grid">
         <div v-for="p in providerList" :key="p.name" class="sg-providers__card">
@@ -163,7 +163,7 @@
 
 <script setup>
 const stats = [
-  { value: '13+', label: 'SMTP Providers' },
+  { value: '17+', label: 'SMTP Providers' },
   { value: 'Smart', label: 'Email Routing' },
   { value: 'AES-256', label: 'Credential Encryption' },
   { value: '100%', label: 'Free & Open Source' },
@@ -173,7 +173,7 @@ const features = [
   {
     icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
     title: 'SMTP Connections',
-    desc: '13+ provider presets with one-click setup. Multiple connections with encrypted credentials, health monitoring, and automatic fallback.',
+    desc: '17+ provider presets with one-click setup. Multiple connections with encrypted credentials, health monitoring, and automatic fallback.',
     color: 'rgba(99, 102, 241, 0.1)',
     link: '/features/connections',
   },
@@ -216,7 +216,7 @@ const features = [
 
 const steps = [
   { title: 'Install & Activate', desc: 'Upload the plugin via WordPress admin or install with WP-CLI. The setup wizard launches automatically.' },
-  { title: 'Connect Your Provider', desc: 'Pick from 13 presets (Gmail, SendGrid, SES...) or enter custom SMTP credentials. Passwords are AES-256 encrypted.' },
+  { title: 'Connect Your Provider', desc: 'Pick from 17 presets (Gmail, SendGrid, SES...) or enter custom SMTP credentials. Passwords are AES-256 encrypted.' },
   { title: 'Send & Monitor', desc: 'Every outgoing email is routed through your SMTP provider, logged, and tracked. Get weekly reports delivered to your inbox.' },
 ]
 
@@ -234,6 +234,10 @@ const providerList = [
   { name: 'Mailtrap', detail: 'Testing & Live' },
   { name: 'Zoho Mail', detail: 'Zoho Suite' },
   { name: 'Yahoo', detail: 'Yahoo Mail' },
+  { name: 'Netcore', detail: 'Email Intelligence' },
+  { name: 'SparkPost', detail: 'MessageBird' },
+  { name: 'SendLayer', detail: 'WordPress SMTP' },
+  { name: 'Mailjet', detail: 'Sinch' },
   { name: 'Custom SMTP', detail: 'Any server' },
 ]
 </script>

@@ -8,7 +8,7 @@ All notable changes to SendGrail are documented on this page.
 
 ### Features
 
-- **SMTP Connections** -- Create and manage multiple SMTP connections with support for 13 pre-configured providers (Gmail, Outlook, Yahoo, SendGrid, Mailgun, Amazon SES, Postmark, Mandrill, Elastic Email, SMTP2GO, Mailtrap, Zoho Mail, Brevo) plus custom SMTP.
+- **SMTP Connections** -- Create and manage multiple SMTP connections with support for 17 pre-configured providers (Gmail, Outlook, Yahoo, SendGrid, Mailgun, Amazon SES, Postmark, Mandrill, Elastic Email, SMTP2GO, Mailtrap, Zoho Mail, Brevo, Netcore, SparkPost, SendLayer, Mailjet) plus custom SMTP.
 - **Default and Fallback Connections** -- Set a primary connection for all outgoing email with an optional fallback connection for automatic failover.
 - **Email Logging** -- Log all outgoing emails with full metadata including recipients, subject, status, and timestamps. Optional full body storage.
 - **Open Tracking** -- Track email opens via an invisible tracking pixel injected into HTML emails.

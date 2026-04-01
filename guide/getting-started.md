@@ -100,4 +100,4 @@ All calls to `wp_mail()` from WordPress core, plugins, and themes will now route
 
 - [Configure a fallback connection](/guide/fallback) for reliability.
 - [Review all available settings](/guide/settings) including email logging and tracking.
-- [Learn about all 13+ supported providers](/guide/providers).
+- [Learn about all 17+ supported providers](/guide/providers).

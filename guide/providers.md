@@ -1,6 +1,6 @@
 # SMTP Providers
 
-SendGrail includes pre-configured templates for 13 popular SMTP providers plus a custom SMTP option. When you select a provider, the host, port, and encryption fields are automatically filled in. You only need to supply your credentials.
+SendGrail includes pre-configured templates for 17 popular SMTP providers plus a custom SMTP option. When you select a provider, the host, port, and encryption fields are automatically filled in. You only need to supply your credentials.
 
 ## Provider Reference
 
@@ -202,6 +202,62 @@ Find your SMTP key in the Brevo dashboard under **Settings > SMTP & API > SMTP**
 
 ---
 
+### Netcore Email
+
+| Setting     | Value                          |
+|-------------|--------------------------------|
+| Host        | `smtp.netcorecloud.net`        |
+| Port        | `587`                          |
+| Encryption  | TLS                            |
+| Username    | Your Netcore SMTP username     |
+| Password    | Your Netcore SMTP password     |
+
+Find your SMTP credentials in the Netcore Email dashboard under **Email API > SMTP settings**.
+
+---
+
+### SparkPost
+
+| Setting     | Value                              |
+|-------------|------------------------------------|
+| Host        | `smtp.sparkpostmail.com`           |
+| Port        | `587`                              |
+| Encryption  | TLS                                |
+| Username    | `SMTP_Injection` (literal string)  |
+| Password    | Your SparkPost API key             |
+
+The username is always the literal text `SMTP_Injection`. Generate an API key from the SparkPost dashboard under **Account > API Keys** with **Send via SMTP** permission enabled.
+
+---
+
+### SendLayer
+
+| Setting     | Value                          |
+|-------------|--------------------------------|
+| Host        | `smtp.sendlayer.net`           |
+| Port        | `587`                          |
+| Encryption  | TLS                            |
+| Username    | Your SendLayer SMTP username   |
+| Password    | Your SendLayer SMTP password   |
+
+Find your SMTP credentials in the SendLayer dashboard under the SMTP credentials section after adding and verifying your domain.
+
+---
+
+### Mailjet
+
+| Setting     | Value                    |
+|-------------|--------------------------|
+| Host        | `in-v3.mailjet.com`     |
+| Port        | `587`                    |
+| Encryption  | TLS                      |
+| Username    | Your Mailjet API key     |
+| Password    | Your Mailjet Secret key  |
+
+Mailjet uses your API key as the username and the paired Secret key as the password. Find both in the Mailjet dashboard under **Account Settings > API Keys**.
+
+---
+
 ### Custom SMTP
 
 | Setting     | Value                    |
@@ -239,3 +295,7 @@ Use the Custom SMTP option to connect to any SMTP server not listed above. All f
 | Mailtrap (Sandbox)     | `sandbox.smtp.mailtrap.io`            | `587`  | TLS        |
 | Zoho Mail              | `smtp.zoho.com`                       | `587`  | TLS        |
 | Brevo                  | `smtp-relay.brevo.com`                | `587`  | TLS        |
+| Netcore Email          | `smtp.netcorecloud.net`               | `587`  | TLS        |
+| SparkPost              | `smtp.sparkpostmail.com`              | `587`  | TLS        |
+| SendLayer              | `smtp.sendlayer.net`                  | `587`  | TLS        |
+| Mailjet                | `in-v3.mailjet.com`                   | `587`  | TLS        |
