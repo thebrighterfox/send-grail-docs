@@ -43,13 +43,11 @@ The welcome screen introduces SendGrail and outlines what the wizard will config
 For providers like Gmail, Yahoo, and Zoho Mail, you must use an **App Password** if two-factor authentication is enabled. Your regular account password will not work.
 :::
 
-### Step 3: Test
-
-Enter a recipient email address and click **Send Test Email**. A success message confirms your connection is working. If it fails, you can go back to Step 2 to correct your settings.
-
-### Step 4: Done
+### Step 3: Done
 
 Setup is complete. You'll see a summary of the connection you created, a link to the dashboard, and quick links to configure email logging, fallback connections, and notifications.
+
+To verify your connection delivers mail, head to the [Test Email](/features/test-simulate) page after finishing the wizard.
 
 ::: info
 If you ever need to run the wizard again, navigate to `#/setup-wizard` from the SendGrail admin page.
@@ -78,11 +76,10 @@ Some providers (like Gmail and Yahoo) require an **App Password** instead of you
 
 After saving a connection, verify it works:
 
-1. Go to the **Connections** tab.
-2. Find your connection in the list and click **Test**.
-3. Enter a recipient email address.
-4. Click **Send Test Email**.
-5. Check the recipient's inbox (and spam folder) for the test message.
+1. Navigate to the **Test Email** page in the SendGrail admin.
+2. Enter a recipient email address.
+3. Click **Send Test Email**.
+4. Check the recipient's inbox (and spam folder) for the test message.
 
 A successful test confirms that your SMTP credentials are correct, the connection is working, and emails will be delivered through this provider.
 

@@ -2,6 +2,12 @@
 
 All notable changes to SendGrail are documented on this page.
 
+## Unreleased
+
+### Removed
+
+- **Test Connection** -- Removed the per-connection "Test Connection" action and the wizard's connection-test step. Use the [Test Email](/features/test-simulate) feature to verify a connection end-to-end. The Setup Wizard is now a 3-step flow (Welcome → Configure → Done).
+
 ## v1.0.0 <Badge type="tip" text="Initial Release" />
 
 *Released: 2026-03-28*
@@ -15,8 +21,7 @@ All notable changes to SendGrail are documented on this page.
 - **Click Tracking** -- Track link clicks by routing through a tracking endpoint before redirecting to the original URL.
 - **Smart Routing** -- Route emails through different SMTP connections based on sender address, recipient, or domain rules.
 - **Setup Wizard** -- Guided four-step wizard for first-time configuration with automatic provider detection and credential validation.
-- **Test Email** -- Send test emails directly from the connection management interface to verify credentials and delivery.
-- **Connection Validation** -- Validate SMTP credentials at save time with clear error reporting.
+- **Test Email** -- Send a real test email from a dedicated page to verify credentials and end-to-end delivery.
 - **Failure Notifications** -- Receive email alerts when delivery fails through all configured connections.
 - **Weekly Summary Reports** -- Scheduled email reports with delivery statistics, failure counts, and engagement metrics.
 - **Dashboard** -- Overview of recent email activity, delivery success rates, and connection status at a glance.

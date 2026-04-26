@@ -47,25 +47,9 @@ One connection must always be designated as the **default**. The default connect
 
 When you set a connection as the default, any previously designated default connection is automatically deactivated from that role.
 
-## Testing Connections
+## Verifying a Connection
 
-SendGrail provides a raw SMTP socket test to verify that a connection can communicate with the mail server. The test performs the following steps:
-
-1. Opens a socket connection to the SMTP host and port
-2. Sends the `EHLO` command to identify the client
-3. Initiates `TLS` encryption if configured
-4. Performs `AUTH` with the provided credentials
-
-This test validates the connection at the transport level without sending an actual email. Use the [Test Email](/features/test-simulate) feature to send a real message.
-
-## Connection Health Table
-
-The connections list displays health information for each configured connection:
-
-| Column | Description |
-|--------|-------------|
-| **Status** | Current connection state (active, inactive, error) |
-| **Last Tested** | Timestamp of the most recent connection test |
+To verify that a connection works end-to-end, send a real message with the [Test Email](/features/test-simulate) feature. This is the recommended way to confirm that credentials, sender authentication, and delivery are all working correctly.
 
 ## Per-Connection Statistics
 
