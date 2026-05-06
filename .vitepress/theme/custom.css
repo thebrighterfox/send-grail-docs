@@ -42,14 +42,26 @@
   letter-spacing: -0.02em;
 }
 
-/* ---------- Sidebar width override ---------- */
+/* ---------- Sidebar width override ----------
+   260px is the sweet spot: wider than ~240 (which clipped longer
+   labels like "Fallback & Reliability") but narrower than the
+   default 272 so the content area gets more horizontal real estate. */
 :root {
-  --vp-sidebar-width: 240px;
+  --vp-sidebar-width: 260px;
 }
 
 @media (min-width: 960px) {
-  .VPSidebar { width: 240px !important; }
-  .VPContent.has-sidebar { padding-left: 240px !important; }
+  .VPSidebar { width: 260px !important; }
+  .VPContent.has-sidebar { padding-left: 260px !important; }
+}
+
+/* Trim VP's default 32px inner padding to 24px so labels have an
+   extra 8px of usable text width before clipping. */
+.VPSidebar .curtain,
+.VPSidebar > .nav,
+.VPSidebar > div:first-child {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 
 /* ---------- Sidebar (Stripe / Linear style) ---------- */
@@ -57,6 +69,12 @@
   /* Ample top padding so the first item ("What is SendGrail?") never
      hides under the sticky top nav on initial render or short scroll. */
   padding-top: 32px !important;
+}
+
+/* Belt-and-braces: never let a label clip mid-word — wrap if needed. */
+.VPSidebarItem .text {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
 }
 
 /* Group separator: a subtle full-width divider plus a label-style
