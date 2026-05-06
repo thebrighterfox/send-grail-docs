@@ -42,9 +42,21 @@
   letter-spacing: -0.02em;
 }
 
+/* ---------- Sidebar width override ---------- */
+:root {
+  --vp-sidebar-width: 240px;
+}
+
+@media (min-width: 960px) {
+  .VPSidebar { width: 240px !important; }
+  .VPContent.has-sidebar { padding-left: 240px !important; }
+}
+
 /* ---------- Sidebar (Stripe / Linear style) ---------- */
 .VPSidebar {
-  padding-top: 14px !important;
+  /* Ample top padding so the first item ("What is SendGrail?") never
+     hides under the sticky top nav on initial render or short scroll. */
+  padding-top: 32px !important;
 }
 
 /* Group separator: a subtle full-width divider plus a label-style

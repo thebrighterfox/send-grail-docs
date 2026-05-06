@@ -163,7 +163,7 @@
 
 <script setup>
 const stats = [
-  { value: '17+', label: 'SMTP Providers' },
+  { value: '18+', label: 'SMTP Providers' },
   { value: 'Smart', label: 'Email Routing' },
   { value: 'AES-256', label: 'Credential Encryption' },
   { value: '100%', label: 'Free & Open Source' },
@@ -173,7 +173,7 @@ const features = [
   {
     icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
     title: 'SMTP Connections',
-    desc: '17+ provider presets with one-click setup. Multiple connections with encrypted credentials, health monitoring, and automatic fallback.',
+    desc: '18+ provider presets with one-click setup. Multiple connections with encrypted credentials, health monitoring, and automatic fallback.',
     color: 'rgba(42, 101, 52, 0.12)',
     link: '/features/connections',
   },
@@ -216,7 +216,7 @@ const features = [
 
 const steps = [
   { title: 'Install & Activate', desc: 'Upload the plugin via WordPress admin or install with WP-CLI. The setup wizard launches automatically.' },
-  { title: 'Connect Your Provider', desc: 'Pick from 17 presets (Gmail, SendGrid, SES...) or enter custom SMTP credentials. Passwords are AES-256 encrypted.' },
+  { title: 'Connect Your Provider', desc: 'Pick from 18 presets (Gmail, SendGrid, SES...) or enter custom SMTP credentials. Passwords are AES-256 encrypted.' },
   { title: 'Send & Monitor', desc: 'Every outgoing email is routed through your SMTP provider, logged, and tracked. Get weekly reports delivered to your inbox.' },
 ]
 
