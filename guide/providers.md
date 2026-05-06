@@ -24,31 +24,12 @@ Gmail has a sending limit of 500 emails per day for personal accounts and 2,000 
 
 ### Outlook / Microsoft 365
 
-| Setting     | Value                       |
-|-------------|-----------------------------|
-| Host        | `smtp.office365.com`        |
-| Port        | `587`                       |
-| Encryption  | TLS                         |
-| Username    | Your full Outlook email     |
-| Password    | Your account password       |
+OAuth 2.0 only — Microsoft has phased out Basic Auth for SMTP across Microsoft 365. Setup uses an Azure AD app registration; see the [Outlook / Microsoft 365 setup guide](/guide/connections/outlook) for the full flow.
 
-For Microsoft 365 business accounts, ensure SMTP AUTH is enabled for the mailbox in the Microsoft 365 admin center under **Active users > Mail > Manage email apps**.
-
----
-
-### Yahoo Mail
-
-| Setting     | Value                  |
-|-------------|------------------------|
-| Host        | `smtp.mail.yahoo.com`  |
-| Port        | `587`                  |
-| Encryption  | TLS                    |
-| Username    | Your full Yahoo email  |
-| Password    | App Password           |
-
-::: warning
-Yahoo requires an **App Password**. Generate one from **Account Info > Account Security > Generate app password**. Standard account passwords are rejected for SMTP.
-:::
+| Setting | Value |
+|---|---|
+| Auth | OAuth 2.0 (Microsoft Graph API) |
+| Required | Azure AD app + Mail.Send permission |
 
 ---
 
@@ -282,8 +263,7 @@ Use the Custom SMTP option to connect to any SMTP server not listed above. All f
 | Provider               | Host                                  | Port   | Encryption |
 |------------------------|---------------------------------------|--------|------------|
 | Gmail                  | `smtp.gmail.com`                      | `587`  | TLS        |
-| Outlook / Microsoft 365| `smtp.office365.com`                  | `587`  | TLS        |
-| Yahoo Mail             | `smtp.mail.yahoo.com`                 | `587`  | TLS        |
+| Outlook / Microsoft 365| OAuth 2.0 (Microsoft Graph API)       | —      | —          |
 | SendGrid               | `smtp.sendgrid.net`                   | `587`  | TLS        |
 | Mailgun                | `smtp.mailgun.org`                    | `587`  | TLS        |
 | Amazon SES             | `email-smtp.{region}.amazonaws.com`   | `587`  | TLS        |

@@ -58,8 +58,7 @@ export default defineConfig({
               items: [
                 { text: 'Gmail (OAuth)', link: '/guide/connections/gmail-oauth' },
                 { text: 'Google Workspace', link: '/guide/connections/google-workspace' },
-                { text: 'Outlook (OAuth)', link: '/guide/connections/outlook' },
-                { text: 'Microsoft 365', link: '/guide/connections/microsoft-365' },
+                { text: 'Outlook / Microsoft 365', link: '/guide/connections/outlook' },
               ]
             },
             {
@@ -86,7 +85,6 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: 'Gmail (App Password)', link: '/guide/connections/gmail' },
-                { text: 'Yahoo Mail', link: '/guide/connections/yahoo' },
                 { text: 'Zoho Mail', link: '/guide/connections/zoho' },
                 { text: 'Mailtrap', link: '/guide/connections/mailtrap' },
                 { text: 'Other SMTP', link: '/guide/connections/custom-smtp' },

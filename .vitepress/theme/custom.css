@@ -42,14 +42,91 @@
   letter-spacing: -0.02em;
 }
 
-/* ---------- Sidebar ---------- */
-.VPSidebar .group + .group {
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 10px;
+/* ---------- Sidebar (Stripe / Linear style) ---------- */
+.VPSidebar {
+  padding-top: 14px !important;
 }
 
+/* Group separator: a subtle full-width divider plus a label-style
+   group title so categories read as section headings. */
+.VPSidebar .group + .group {
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+/* Top-level group label */
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-text-3) !important;
+}
+
+.VPSidebarItem.level-0 {
+  margin-bottom: 6px !important;
+}
+
+/* All sidebar items: tighter density, larger hit area */
 .VPSidebarItem .text {
-  font-size: 14px;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.VPSidebarItem.level-1 > .item > .link,
+.VPSidebarItem.level-2 > .item > .link {
+  padding: 4px 0 !important;
+}
+
+/* Nested level-2 items (provider names inside OAuth-based etc.):
+   subtle indent + softer color so they read as drilldowns. */
+.VPSidebarItem.level-2 .text {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+.VPSidebarItem.level-2 .link:hover .text {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* Active page highlight — left bar accent, brand-tinted bg, bold text */
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+}
+
+.VPSidebarItem.is-active > .item > .link {
+  position: relative;
+}
+
+.VPSidebarItem.is-active > .item > .link::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--vp-c-brand-1);
+}
+
+/* Collapsible parent caret — keep it muted and tighter */
+.VPSidebarItem.collapsible > .item .caret-icon {
+  opacity: 0.5;
+  transition: transform 0.15s ease;
+}
+
+.VPSidebarItem.collapsible > .item .caret-icon:hover {
+  opacity: 1;
+}
+
+/* Collapsible parent (e.g. "OAuth-based") title — slightly bolder than
+   children to read as a header */
+.VPSidebarItem.collapsible.level-1 > .item > .text {
+  font-weight: 600 !important;
+  color: var(--vp-c-text-1) !important;
 }
 
 /* ---------- Content typography ---------- */

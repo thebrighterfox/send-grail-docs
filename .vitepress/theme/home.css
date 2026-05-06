@@ -3,10 +3,24 @@
    Stripe / Linear style: minimal, content-first.
    ========================================== */
 
+/* layout: page removes VitePress's doc container, so we own all the
+   horizontal centering and width constraints here. */
 .docs-home {
   max-width: 1100px;
   margin: 0 auto;
   padding: 8px 24px 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Kill any leftover VitePress page padding when our home renders
+   under `layout: page`. */
+.VPContent.is-home {
+  padding-bottom: 0 !important;
+}
+
+.VPContent.is-home .VPPage {
+  padding: 0 !important;
 }
 
 /* ===== Header ===== */

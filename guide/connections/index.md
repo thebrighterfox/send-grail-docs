@@ -13,8 +13,7 @@ Recommended for personal Gmail / Outlook accounts and Google Workspace / Microso
 <ul class="conn-index">
   <li><a href="/guide/connections/gmail-oauth"><div class="conn-index__logo"><img src="/provider-icons/gmail.svg" alt="" /><strong>Gmail OAuth</strong></div><small>Personal Gmail accounts via Google Cloud OAuth client.</small><span class="conn-index__pill conn-index__pill--oauth">OAuth · Easy</span></a></li>
   <li><a href="/guide/connections/google-workspace"><div class="conn-index__logo"><img src="/provider-icons/gmail.svg" alt="" /><strong>Google Workspace</strong></div><small>Domain-verified Workspace accounts with full OAuth + DKIM.</small><span class="conn-index__pill conn-index__pill--oauth">OAuth · Medium</span></a></li>
-  <li><a href="/guide/connections/outlook"><div class="conn-index__logo"><img src="/provider-icons/outlook.svg" alt="" /><strong>Outlook OAuth</strong></div><small>Personal outlook.com / hotmail.com via Azure app registration.</small><span class="conn-index__pill conn-index__pill--oauth">OAuth · Medium</span></a></li>
-  <li><a href="/guide/connections/microsoft-365"><div class="conn-index__logo"><img src="/provider-icons/outlook.svg" alt="" /><strong>Microsoft 365</strong></div><small>Business Office 365 mailboxes via Azure AD.</small><span class="conn-index__pill conn-index__pill--oauth">OAuth · Medium</span></a></li>
+  <li><a href="/guide/connections/outlook"><div class="conn-index__logo"><img src="/provider-icons/outlook.svg" alt="" /><strong>Outlook / Microsoft 365</strong></div><small>Personal Outlook.com / Hotmail or business Microsoft 365 mailboxes via Azure app.</small><span class="conn-index__pill conn-index__pill--oauth">OAuth · Medium</span></a></li>
 </ul>
 
 ## API-based providers
@@ -43,7 +42,6 @@ Username + password authentication over standard SMTP ports.
 
 <ul class="conn-index">
   <li><a href="/guide/connections/gmail"><div class="conn-index__logo"><img src="/provider-icons/gmail.svg" alt="" /><strong>Gmail (App Password)</strong></div><small>Personal Gmail with a 2FA app password.</small><span class="conn-index__pill">SMTP · Easy</span></a></li>
-  <li><a href="/guide/connections/yahoo"><div class="conn-index__logo"><img src="/provider-icons/yahoo.svg" alt="" /><strong>Yahoo Mail</strong></div><small>Yahoo Mail with an app password.</small><span class="conn-index__pill">SMTP · Easy</span></a></li>
   <li><a href="/guide/connections/zoho"><div class="conn-index__logo"><img src="/provider-icons/zoho.svg" alt="" /><strong>Zoho Mail</strong></div><small>Zoho Suite mailboxes with app password.</small><span class="conn-index__pill">SMTP · Easy</span></a></li>
   <li><a href="/guide/connections/mailtrap"><div class="conn-index__logo"><img src="/provider-icons/mailtrap.svg" alt="" /><strong>Mailtrap</strong></div><small>Production sending or sandbox testing.</small><span class="conn-index__pill">SMTP · Easy</span></a></li>
   <li><a href="/guide/connections/custom-smtp"><div class="conn-index__logo"><img src="/provider-icons/custom-smtp.svg" alt="" /><strong>Other SMTP</strong></div><small>Any SMTP server with host/port/credentials.</small><span class="conn-index__pill">SMTP · Easy</span></a></li>

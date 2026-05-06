@@ -40,7 +40,7 @@ The welcome screen introduces SendGrail and outlines what the wizard will config
 3. Click **Save**.
 
 ::: warning
-For providers like Gmail, Yahoo, and Zoho Mail, you must use an **App Password** if two-factor authentication is enabled. Your regular account password will not work.
+For providers like Gmail and Zoho Mail, you must use an **App Password** if two-factor authentication is enabled. Your regular account password will not work. Outlook / Microsoft 365 uses OAuth 2.0 instead — no SMTP password needed.
 :::
 
 ### Step 3: Done
@@ -69,7 +69,7 @@ If you skipped the wizard or want to add additional connections:
 6. Click **Save Connection**.
 
 ::: warning
-Some providers (like Gmail and Yahoo) require an **App Password** instead of your regular account password. See the [SMTP Providers](/guide/providers) page for provider-specific instructions.
+Some providers (like Gmail and Zoho) require an **App Password** instead of your regular account password. Others (like Outlook / Microsoft 365) require OAuth 2.0 authorization with no SMTP password. See the [Provider Setup Guides](/guide/connections/) for step-by-step instructions per provider.
 :::
 
 ## Sending a Test Email

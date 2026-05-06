@@ -1,7 +1,7 @@
 ---
+layout: page
 title: SendGrail Documentation
 description: Documentation for SendGrail, the WordPress plugin that fixes email delivery via SMTP and API providers.
-sidebar: false
 ---
 
 <div class="docs-home">
@@ -72,7 +72,6 @@ sidebar: false
     <a href="/guide/connections/zoho" title="Zoho Mail"><img src="/provider-icons/zoho.svg" alt="Zoho Mail" /></a>
     <a href="/guide/connections/sendlayer" title="SendLayer"><img src="/provider-icons/sendlayer.svg" alt="SendLayer" /></a>
     <a href="/guide/connections/resend" title="Resend"><img src="/provider-icons/resend.svg" alt="Resend" /></a>
-    <a href="/guide/connections/yahoo" title="Yahoo Mail"><img src="/provider-icons/yahoo.svg" alt="Yahoo Mail" /></a>
     <a href="/guide/connections/netcore" title="Netcore Email"><img src="/provider-icons/netcore.svg" alt="Netcore Email" /></a>
     <a href="/guide/connections/custom-smtp" title="Other SMTP"><img src="/provider-icons/custom-smtp.svg" alt="Other SMTP" /></a>
   </div>
