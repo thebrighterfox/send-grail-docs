@@ -174,7 +174,7 @@ const features = [
     icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
     title: 'SMTP Connections',
     desc: '17+ provider presets with one-click setup. Multiple connections with encrypted credentials, health monitoring, and automatic fallback.',
-    color: 'rgba(99, 102, 241, 0.1)',
+    color: 'rgba(42, 101, 52, 0.12)',
     link: '/features/connections',
   },
   {
@@ -188,7 +188,7 @@ const features = [
     icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>',
     title: 'Smart Routing',
     desc: 'Route emails through different SMTP connections based on recipient, sender, subject, or custom headers with priority rules.',
-    color: 'rgba(168, 85, 247, 0.1)',
+    color: 'rgba(42, 101, 52, 0.18)',
     link: '/features/email-routing',
   },
   {

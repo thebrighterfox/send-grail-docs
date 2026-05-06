@@ -15,15 +15,21 @@ export default defineConfig({
     logo: '/logo.svg',
     siteTitle: 'SendGrail',
     nav: [
-      { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'Features', link: '/features/connections' },
+      { text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
+      { text: 'Connections', link: '/guide/connections/', activeMatch: '/guide/connections/' },
+      { text: 'Features', link: '/features/connections', activeMatch: '/features/' },
+      { text: 'Changelog', link: '/changelog' },
       {
-        text: 'v1.0.0',
+        text: 'Resources',
         items: [
-          { text: 'Changelog', link: '/changelog' },
-          { text: 'WordPress.org', link: 'https://wordpress.org/plugins/sendgrail/' },
+          { text: 'WordPress.org plugin', link: 'https://wordpress.org/plugins/sendgrail/' },
+          { text: 'Support forum', link: 'https://wordpress.org/support/plugin/sendgrail/' },
+          { text: 'GitHub', link: 'https://github.com/brighterfox/sendgrail' },
         ]
-      }
+      },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/brighterfox/sendgrail' },
     ],
     sidebar: {
       '/guide/': [
@@ -37,9 +43,62 @@ export default defineConfig({
         {
           text: 'Configuration',
           items: [
-            { text: 'SMTP Providers', link: '/guide/providers' },
+            { text: 'SMTP Providers (Reference)', link: '/guide/providers' },
             { text: 'Settings', link: '/guide/settings' },
             { text: 'Fallback & Reliability', link: '/guide/fallback' },
+          ]
+        },
+        {
+          text: 'Provider Setup Guides',
+          items: [
+            { text: 'Overview', link: '/guide/connections/' },
+            {
+              text: 'OAuth-based',
+              collapsed: true,
+              items: [
+                { text: 'Gmail (OAuth)', link: '/guide/connections/gmail-oauth' },
+                { text: 'Google Workspace', link: '/guide/connections/google-workspace' },
+                { text: 'Outlook (OAuth)', link: '/guide/connections/outlook' },
+                { text: 'Microsoft 365', link: '/guide/connections/microsoft-365' },
+              ]
+            },
+            {
+              text: 'API providers',
+              collapsed: true,
+              items: [
+                { text: 'SendGrid', link: '/guide/connections/sendgrid' },
+                { text: 'Mailgun', link: '/guide/connections/mailgun' },
+                { text: 'Postmark', link: '/guide/connections/postmark' },
+                { text: 'Amazon SES', link: '/guide/connections/amazon-ses' },
+                { text: 'Brevo', link: '/guide/connections/brevo' },
+                { text: 'Mandrill', link: '/guide/connections/mandrill' },
+                { text: 'SparkPost', link: '/guide/connections/sparkpost' },
+                { text: 'Elastic Email', link: '/guide/connections/elastic-email' },
+                { text: 'SMTP2GO', link: '/guide/connections/smtp2go' },
+                { text: 'Mailjet', link: '/guide/connections/mailjet' },
+                { text: 'Netcore Email', link: '/guide/connections/netcore' },
+                { text: 'SendLayer', link: '/guide/connections/sendlayer' },
+                { text: 'Resend', link: '/guide/connections/resend' },
+              ]
+            },
+            {
+              text: 'SMTP-based',
+              collapsed: true,
+              items: [
+                { text: 'Gmail (App Password)', link: '/guide/connections/gmail' },
+                { text: 'Yahoo Mail', link: '/guide/connections/yahoo' },
+                { text: 'Zoho Mail', link: '/guide/connections/zoho' },
+                { text: 'Mailtrap', link: '/guide/connections/mailtrap' },
+                { text: 'Other SMTP', link: '/guide/connections/custom-smtp' },
+              ]
+            },
+            {
+              text: 'Server-based',
+              collapsed: true,
+              items: [
+                { text: 'PHP Mail', link: '/guide/connections/php' },
+              ]
+            },
           ]
         },
       ],
