@@ -42,121 +42,170 @@
   letter-spacing: -0.02em;
 }
 
-/* ---------- Sidebar width override ----------
-   260px is the sweet spot: wider than ~240 (which clipped longer
-   labels like "Fallback & Reliability") but narrower than the
-   default 272 so the content area gets more horizontal real estate. */
+/* ==========================================
+   Sidebar — quiet, scannable, docs-focused
+   ========================================== */
+
 :root {
-  --vp-sidebar-width: 260px;
+  --vp-sidebar-width: 280px;
 }
 
 @media (min-width: 960px) {
-  .VPSidebar { width: 260px !important; }
-  .VPContent.has-sidebar { padding-left: 260px !important; }
+  .VPSidebar { width: 280px !important; }
+  .VPContent.has-sidebar { padding-left: 280px !important; }
 }
 
-/* Trim VP's default 32px inner padding to 24px so labels have an
-   extra 8px of usable text width before clipping. */
-.VPSidebar .curtain,
+.VPSidebar {
+  padding: 28px 20px 48px 28px !important;
+  background-color: var(--vp-c-bg) !important;
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+.dark .VPSidebar {
+  background-color: var(--vp-c-bg-alt) !important;
+}
+
+.VPSidebar .curtain {
+  display: none !important;
+}
+
 .VPSidebar > .nav,
 .VPSidebar > div:first-child {
-  padding-left: 24px !important;
-  padding-right: 24px !important;
+  padding: 0 !important;
 }
 
-/* ---------- Sidebar (Stripe / Linear style) ---------- */
-.VPSidebar {
-  /* Ample top padding so the first item ("What is SendGrail?") never
-     hides under the sticky top nav on initial render or short scroll. */
-  padding-top: 32px !important;
-}
-
-/* Belt-and-braces: never let a label clip mid-word — wrap if needed. */
+/* Never clip — wrap if a label is long */
 .VPSidebarItem .text {
   white-space: normal !important;
   overflow-wrap: anywhere;
+  line-height: 1.45;
 }
 
-/* Group separator: a subtle full-width divider plus a label-style
-   group title so categories read as section headings. */
-.VPSidebar .group + .group {
-  border-top: 1px solid var(--vp-c-divider);
-  margin-top: 12px;
-  padding-top: 12px;
-}
-
-/* Top-level group label */
-.VPSidebarItem.level-0 > .item > .text {
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--vp-c-text-3) !important;
-}
-
+/* ---- Top-level groups ("Documentation", "SMTP Connections", "Features") ---- */
 .VPSidebarItem.level-0 {
-  margin-bottom: 6px !important;
+  margin-bottom: 18px !important;
+  padding-bottom: 0 !important;
+  border: 0 !important;
 }
 
-/* All sidebar items: tighter density, larger hit area */
-.VPSidebarItem .text {
-  font-size: 13.5px;
-  line-height: 1.4;
+.VPSidebarItem.level-0 + .VPSidebarItem.level-0 {
+  margin-top: 4px !important;
+}
+
+.VPSidebarItem.level-0 > .item {
+  padding: 0 0 8px 0 !important;
+  margin-bottom: 4px !important;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  color: var(--vp-c-text-1) !important;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+
+/* ---- Leaf links (level-1, level-2) ---- */
+.VPSidebarItem.level-1 > .item,
+.VPSidebarItem.level-2 > .item {
+  padding: 0 !important;
 }
 
 .VPSidebarItem.level-1 > .item > .link,
 .VPSidebarItem.level-2 > .item > .link {
-  padding: 4px 0 !important;
+  display: block;
+  padding: 6px 10px !important;
+  margin: 1px 0 !important;
+  border-radius: 6px;
+  transition: background-color 0.12s ease, color 0.12s ease;
 }
 
-/* Nested level-2 items (provider names inside OAuth-based etc.):
-   subtle indent + softer color so they read as drilldowns. */
-.VPSidebarItem.level-2 .text {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
+.VPSidebarItem.level-1 > .item > .link > .text,
+.VPSidebarItem.level-2 > .item > .link > .text {
+  font-size: 13.5px !important;
+  font-weight: 400 !important;
+  color: var(--vp-c-text-2) !important;
+  transition: color 0.12s ease;
 }
 
-.VPSidebarItem.level-2 .link:hover .text {
-  color: var(--vp-c-brand-1) !important;
+/* Hover: soft surface tint, no brand color shift on text */
+.VPSidebarItem.level-1 > .item > .link:hover,
+.VPSidebarItem.level-2 > .item > .link:hover {
+  background-color: var(--vp-c-bg-soft);
 }
 
-/* Active page highlight — left bar accent, brand-tinted bg, bold text */
+.VPSidebarItem.level-1 > .item > .link:hover > .text,
+.VPSidebarItem.level-2 > .item > .link:hover > .text {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* ---- Collapsible group headers ("OAuth-based", "SMTP-based") ---- */
+.VPSidebarItem.collapsible.level-1 > .item {
+  padding: 6px 10px !important;
+  margin: 1px 0 !important;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.VPSidebarItem.collapsible.level-1 > .item:hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.VPSidebarItem.collapsible.level-1 > .item > .text {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: var(--vp-c-text-1) !important;
+}
+
+.VPSidebarItem.collapsible > .item .caret {
+  padding-right: 4px !important;
+}
+
+.VPSidebarItem.collapsible > .item .caret-icon {
+  opacity: 0.55;
+  transition: transform 0.18s ease, opacity 0.12s ease;
+}
+
+.VPSidebarItem.collapsible > .item:hover .caret-icon {
+  opacity: 1;
+}
+
+/* Children of a collapsible group: subtle left guide line + indent */
+.VPSidebarItem.collapsible.level-1 > .items {
+  position: relative;
+  margin-left: 10px !important;
+  padding-left: 12px !important;
+  border-left: 1px solid var(--vp-c-divider);
+  margin-top: 2px !important;
+  margin-bottom: 6px !important;
+}
+
+/* ---- Active page: subtle background + brand text, no garish bar ---- */
+.VPSidebarItem.is-active > .item > .link {
+  background-color: var(--vp-c-brand-soft);
+}
+
 .VPSidebarItem.is-active > .item > .link > .text {
   color: var(--vp-c-brand-1) !important;
   font-weight: 600 !important;
 }
 
-.VPSidebarItem.is-active > .item > .link {
+/* For active items inside a collapsible group, draw the indicator on
+   the guide line so it ties the active item back to its parent group. */
+.VPSidebarItem.collapsible.level-1 > .items > .VPSidebarItem.is-active {
   position: relative;
 }
 
-.VPSidebarItem.is-active > .item > .link::before {
+.VPSidebarItem.collapsible.level-1 > .items > .VPSidebarItem.is-active::before {
   content: '';
   position: absolute;
-  left: -16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 18px;
+  left: -13px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
   border-radius: 2px;
   background: var(--vp-c-brand-1);
-}
-
-/* Collapsible parent caret — keep it muted and tighter */
-.VPSidebarItem.collapsible > .item .caret-icon {
-  opacity: 0.5;
-  transition: transform 0.15s ease;
-}
-
-.VPSidebarItem.collapsible > .item .caret-icon:hover {
-  opacity: 1;
-}
-
-/* Collapsible parent (e.g. "OAuth-based") title — slightly bolder than
-   children to read as a header */
-.VPSidebarItem.collapsible.level-1 > .item > .text {
-  font-weight: 600 !important;
-  color: var(--vp-c-text-1) !important;
 }
 
 /* ---------- Content typography ---------- */
