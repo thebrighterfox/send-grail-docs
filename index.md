@@ -117,8 +117,8 @@ description: Documentation for SendGrail, the WordPress plugin that fixes email 
 
 <footer class="docs-home__footer">
   <div class="docs-home__footer-cell">
-    <strong>Open source</strong>
-    <span>Released under the GPL-3.0 license. Source on <a href="https://github.com/brighterfox/sendgrail" target="_blank" rel="noopener">GitHub</a>.</span>
+    <strong>Completely free</strong>
+    <span>No paid tier, no upsells, no feature gates. Install from <a href="https://wordpress.org/plugins/sendgrail/" target="_blank" rel="noopener">WordPress.org</a> and use everything.</span>
   </div>
   <div class="docs-home__footer-cell">
     <strong>Need help?</strong>

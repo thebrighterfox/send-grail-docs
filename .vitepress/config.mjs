@@ -24,12 +24,8 @@ export default defineConfig({
         items: [
           { text: 'WordPress.org plugin', link: 'https://wordpress.org/plugins/sendgrail/' },
           { text: 'Support forum', link: 'https://wordpress.org/support/plugin/sendgrail/' },
-          { text: 'GitHub', link: 'https://github.com/brighterfox/sendgrail' },
         ]
       },
-    ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/brighterfox/sendgrail' },
     ],
     sidebar: {
       '/guide/': [
@@ -135,7 +131,6 @@ export default defineConfig({
       ],
     },
     footer: {
-      message: 'Released under the GPL-3.0 License.',
       copyright: 'Copyright 2026 SendGrail'
     },
     search: {

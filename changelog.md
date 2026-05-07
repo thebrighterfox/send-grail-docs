@@ -2,15 +2,9 @@
 
 All notable changes to SendGrail are documented on this page.
 
-## Unreleased
-
-### Removed
-
-- **Test Connection** -- Removed the per-connection "Test Connection" action and the wizard's connection-test step. Use the [Test Email](/features/test-simulate) feature to verify a connection end-to-end. The Setup Wizard is now a 3-step flow (Welcome → Configure → Done).
-
 ## v1.0.0 <Badge type="tip" text="Initial Release" />
 
-*Released: 2026-03-28*
+*Released: 2026-05-08*
 
 ### Features
 
