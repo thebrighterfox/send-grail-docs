@@ -35,7 +35,7 @@ When you save a "PHP" connection and an email is routed through it, SendGrail ha
 
 ### Add the connection
 
-**SendGrail → Connections → Add Connection** → pick **PHP** (between Mailtrap and Other SMTP in the provider grid).
+**SendGrail → Connections → Add Connection** → pick **PHP** from the provider grid.
 
 </div>
 

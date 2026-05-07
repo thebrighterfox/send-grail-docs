@@ -21,7 +21,7 @@ SendGrail hooks into WordPress's `wp_mail()` function and routes all outgoing em
 
 ### 18+ SMTP / API Providers
 
-Connect to Gmail, Outlook / Microsoft 365, SendGrid, Mailgun, Amazon SES, Postmark, Mandrill, Elastic Email, SMTP2GO, Mailtrap, Zoho Mail, Brevo, Netcore, SparkPost, SendLayer, Mailjet, Resend, or any custom SMTP server. Each provider has a pre-configured template so you only need to enter your credentials.
+Connect to Gmail, Outlook / Microsoft 365, SendGrid, Mailgun, Amazon SES, Postmark, Mandrill, Elastic Email, SMTP2GO, Zoho Mail, Brevo, Netcore, SparkPost, SendLayer, Mailjet, Resend, or any custom SMTP server. Each provider has a pre-configured template so you only need to enter your credentials.
 
 ### Email Logging
 

@@ -42,6 +42,20 @@
   letter-spacing: -0.02em;
 }
 
+/* Unify navbar background across the title (sidebar-aligned) section
+   and the content section. By default VP paints the title block with
+   the sidebar's bg color, leaving a visible seam at the sidebar edge.
+   Force both halves to the main page bg so the bar reads as one,
+   and keep the bottom divider continuous across the full width. */
+.VPNavBar.has-sidebar .title,
+.VPNavBar.has-sidebar .content-body {
+  background-color: var(--vp-c-bg) !important;
+}
+
+.VPNavBar.has-sidebar .title {
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+}
+
 /* ==========================================
    Sidebar — quiet, scannable, docs-focused
    ========================================== */
@@ -191,22 +205,6 @@
   font-weight: 600 !important;
 }
 
-/* For active items inside a collapsible group, draw the indicator on
-   the guide line so it ties the active item back to its parent group. */
-.VPSidebarItem.collapsible.level-1 > .items > .VPSidebarItem.is-active {
-  position: relative;
-}
-
-.VPSidebarItem.collapsible.level-1 > .items > .VPSidebarItem.is-active::before {
-  content: '';
-  position: absolute;
-  left: -13px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--vp-c-brand-1);
-}
 
 /* ---------- Content typography ---------- */
 .vp-doc h1 {

@@ -57,7 +57,7 @@ description: Documentation for SendGrail, the WordPress plugin that fixes email 
     <a href="/guide/connections/" class="docs-providers-strip__more">View all 18+ →</a>
   </div>
   <div class="docs-providers-strip__grid">
-    <a href="/guide/connections/gmail-oauth" title="Gmail"><img src="/provider-icons/gmail.svg" alt="Gmail" /></a>
+    <a href="/guide/connections/google-workspace" title="Gmail"><img src="/provider-icons/gmail.svg" alt="Gmail" /></a>
     <a href="/guide/connections/outlook" title="Outlook"><img src="/provider-icons/outlook.svg" alt="Outlook" /></a>
     <a href="/guide/connections/sendgrid" title="SendGrid"><img src="/provider-icons/sendgrid.svg" alt="SendGrid" /></a>
     <a href="/guide/connections/mailgun" title="Mailgun"><img src="/provider-icons/mailgun.svg" alt="Mailgun" /></a>

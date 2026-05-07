@@ -56,9 +56,9 @@ export default defineConfig({
               text: 'OAuth-based',
               collapsed: true,
               items: [
-                { text: 'Gmail (OAuth)', link: '/guide/connections/gmail-oauth' },
-                { text: 'Google Workspace', link: '/guide/connections/google-workspace' },
+                { text: 'Google Workspace / Gmail', link: '/guide/connections/google-workspace' },
                 { text: 'Outlook / Microsoft 365', link: '/guide/connections/outlook' },
+                { text: 'Zoho Mail', link: '/guide/connections/zoho' },
               ]
             },
             {
@@ -85,8 +85,6 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: 'Gmail (App Password)', link: '/guide/connections/gmail' },
-                { text: 'Zoho Mail', link: '/guide/connections/zoho' },
-                { text: 'Mailtrap', link: '/guide/connections/mailtrap' },
                 { text: 'Other SMTP', link: '/guide/connections/custom-smtp' },
               ]
             },
@@ -97,6 +95,15 @@ export default defineConfig({
                 { text: 'PHP Mail', link: '/guide/connections/php' },
               ]
             },
+          ]
+        },
+        {
+          text: 'Alert Channels',
+          items: [
+            { text: 'Overview', link: '/guide/integrations/' },
+            { text: 'Discord', link: '/guide/integrations/discord' },
+            { text: 'Slack', link: '/guide/integrations/slack' },
+            { text: 'Telegram', link: '/guide/integrations/telegram' },
           ]
         },
       ],

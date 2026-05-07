@@ -8,24 +8,28 @@
     <div class="conn-hero__meta">
       <span class="conn-meta-pill conn-meta-pill--medium">Medium</span>
       <span class="conn-meta-pill">~15 min</span>
-      <span class="conn-meta-pill">SMTP / API</span>
+      <span class="conn-meta-pill">API</span>
       <span class="conn-meta-pill">Region-specific</span>
     </div>
   </div>
 </div>
 
+::: info SendGrail uses the SES API
+SendGrail's Amazon SES integration uses the SES HTTP API with **IAM access keys** (not SMTP credentials). You'll generate an `AKIA...` access key + secret access key for an IAM user with `AmazonSESFullAccess`.
+:::
+
 ## Prerequisites
 
-- An **AWS account**. Free tier works for testing.
-- A domain you can edit DNS records for (DKIM verification requires this).
+- An **AWS account**. The Free Tier covers 62,000 outbound emails per month.
+- A domain you can edit DNS records for (recommended — required for production sending). Single-email verification works for testing.
 - WordPress admin access.
 
 ## Setup overview
 
-1. Pick an AWS region.
-2. Verify your sending domain in SES.
-3. Create SMTP credentials (a special IAM user).
-4. Request production access (to send to non-verified addresses).
+1. Verify a sending identity (domain or email) in SES.
+2. Create an IAM user with SES permissions.
+3. Generate an access key + secret access key for that user.
+4. Request a sending-quota increase to leave the SES sandbox.
 5. Add the connection in SendGrail.
 
 ## Step-by-step
@@ -34,136 +38,211 @@
 
 <div class="step" data-step="1">
 
-### Choose your AWS region
+### Verify a sending identity
 
-Open [AWS SES console](https://console.aws.amazon.com/ses/). The top-right region selector controls everything.
+In your chosen region, open [SES → Configuration → Identities → Create identity](https://console.aws.amazon.com/ses/home#/verified-identities). Pick **Domain** for production sending (Easy DKIM gives you 3 CNAME records — paste them into your DNS) or **Email address** for a quick test (SES emails you a confirmation link).
 
-![AWS SES console — region selector](/screenshots/connections/ses/Screenshot-1.png)
+This step doesn't have its own screenshot — the rest of this guide covers IAM and quota setup. Once your identity shows **Verified**, continue below.
 
-Pick a region geographically close to your WordPress server for lowest latency. Common picks:
-- `us-east-1` (N. Virginia) — cheapest, default for many setups
-- `eu-west-1` (Ireland) — for EU sites with GDPR concerns
-- `ap-south-1` (Mumbai) — for South Asia
-
-The region you pick determines the SMTP host: `email-smtp.{region}.amazonaws.com`.
+::: tip Pick the region first
+The region selector (top-right of the AWS console) decides everything: which SES endpoint hosts your identities, where IAM credentials are scoped, and what the SMTP host looks like (`email-smtp.{region}.amazonaws.com`). Stay in one region for the whole flow.
+:::
 
 </div>
 
 <div class="step" data-step="2">
 
-### Verify your sending domain
+### Open IAM Users
 
-In SES → **Configuration → Identities → Create identity**.
+In the AWS console search bar, type **users** and click the **Users** result under **Features** (it's an IAM feature).
 
-![Create identity in SES](/screenshots/connections/ses/Screenshot-2.png)
-
-Choose **Domain** as the identity type. Enter your domain (e.g. `yourcompany.com`).
-
-![Domain identity setup](/screenshots/connections/ses/Screenshot-3.png)
-
-Enable **DKIM signing** with **Easy DKIM** (default). SES generates DKIM keys and shows DNS records to add.
-
-![DKIM CNAME records](/screenshots/connections/ses/Screenshot-4.png)
-
-Click **Create identity**, then go to your DNS provider (Cloudflare, Route 53, GoDaddy, etc.) and add the **3 CNAME records** SES showed you.
-
-![DNS records to add](/screenshots/connections/ses/Screenshot-5.png)
-
-Wait for DNS propagation (usually 5–30 minutes). SES will show **Verified** when ready.
-
-![Verified domain status](/screenshots/connections/ses/Screenshot-6.png)
+![AWS console search → Users (IAM)](/screenshots/connections/ses/Screenshot-1.png)
 
 </div>
 
 <div class="step" data-step="3">
 
-### Verify a single email address (alternative for testing)
+### Click Create user
 
-If you don't have a domain handy, you can verify a single email address as a sender:
+The IAM Users page opens with an empty list (or your existing users). Click **Create user** at the top right.
 
-In SES → **Identities → Create identity → Email address**. Enter your email, click Create.
-
-![Email address verification](/screenshots/connections/ses/Screenshot-7.png)
-
-SES sends a confirmation email — click the link in it to verify.
-
-![Verification email](/screenshots/connections/ses/Screenshot-8.png)
-
-::: warning Sandbox vs production
-A new SES account starts in **sandbox mode**. You can only send to *verified* email addresses (yours) until AWS approves your production-access request. Step 5 covers that.
-:::
+![IAM Users page → Create user](/screenshots/connections/ses/Screenshot-2.png)
 
 </div>
 
 <div class="step" data-step="4">
 
-### Create SMTP credentials
+### Specify user details
 
-In SES → **Configuration → SMTP settings → Create SMTP credentials**.
+In **Step 1 — Specify user details**, enter a user name like `sendgrail` (or anything descriptive). Leave *Provide user access to the AWS Management Console* unchecked — this user only needs programmatic access. Click **Next**.
 
-![SMTP settings page](/screenshots/connections/ses/Screenshot-9.png)
-
-AWS opens an IAM dialog to create a service user with the correct permissions. Pick a name (or accept the default `ses-smtp-user-...`) and click **Create**.
-
-![IAM user creation for SMTP](/screenshots/connections/ses/Screenshot-10.png)
-
-AWS displays the **SMTP username** and **SMTP password** **once**. Click **Download .csv** to save them — you can't view the password again.
-
-![SMTP credentials downloaded](/screenshots/connections/ses/Screenshot-11.png)
-
-::: info SES SMTP credentials are not your AWS access keys
-The SMTP user/password are derived but distinct from IAM access keys. Only use the values shown on this screen — your `AKIA*` access key won't work for SMTP.
-:::
+![Specify user details — name = sendgrail](/screenshots/connections/ses/Screenshot-3.png)
 
 </div>
 
 <div class="step" data-step="5">
 
-### Request production access
+### Attach the SES policy
 
-By default, SES is in **sandbox mode** (200 emails/day, only to verified addresses). To send to anyone:
+In **Step 2 — Set permissions**, pick **Attach policies directly**. Search for `sesfu` and tick **AmazonSESFullAccess**. Click **Next**.
 
-In SES → **Account dashboard → Request production access**.
+![Attach policies directly → AmazonSESFullAccess](/screenshots/connections/ses/Screenshot-4.png)
 
-![Production access request](/screenshots/connections/ses/Screenshot-12.png)
-
-Fill out the use-case form. AWS typically approves within **24 hours** if your description is clear:
-- **Mail type:** Transactional (or Marketing if applicable)
-- **Website URL:** your WordPress site
-- **Use case:** brief description of what you'll send
-- **Compliance:** confirm you'll only send to opted-in recipients
-
-![Use case description](/screenshots/connections/ses/Screenshot-13.png)
+::: tip Tighter scope
+`AmazonSESFullAccess` works but is broad. For production you can swap it for a narrower inline policy granting only `ses:SendEmail` and `ses:SendRawEmail` on your verified identities — same outcome, smaller blast radius.
+:::
 
 </div>
 
 <div class="step" data-step="6">
 
-### Add the connection in SendGrail
+### Review and create the user
 
-WordPress admin → **SendGrail → Connections → Add Connection** → pick **Amazon SES**.
+**Step 3 — Review and create** shows a summary (User name, Permissions = AmazonSESFullAccess). Click **Create user**.
 
-![SendGrail Amazon SES selection](/screenshots/connections/ses/Screenshot-14.png)
-
-Fill in:
-- **Connection Name:** Amazon SES
-- **Region:** matches the AWS region you picked in step 1 (e.g. `us-east-1`). The host auto-fills.
-- **From Email:** your verified domain or address
-- **From Name:** display name
-- **Username:** SMTP username from the CSV in step 4
-- **Password:** SMTP password from the CSV in step 4
-
-![Connection form filled in](/screenshots/connections/ses/Screenshot-15.png)
-
-Click **Save**.
+![Review and create — Create user](/screenshots/connections/ses/Screenshot-5.png)
 
 </div>
 
 <div class="step" data-step="7">
 
-### Test it
+### Open the new user
 
-**SendGrail → Test Email** → pick the SES connection → send a test message to a verified address (or any address once production access is approved).
+A green *"User created successfully"* banner appears and the IAM Users list now includes `sendgrail`. Click the user's name to open it.
+
+![User created — click into sendgrail](/screenshots/connections/ses/Screenshot-6.png)
+
+</div>
+
+<div class="step" data-step="8">
+
+### Open Security credentials
+
+On the user's detail page, switch to the **Security credentials** tab. Scroll to the **Access keys** section — it'll be empty. Click **Create access key**.
+
+![Security credentials → Create access key](/screenshots/connections/ses/Screenshot-7.png)
+
+</div>
+
+<div class="step" data-step="9">
+
+### Choose access key use case
+
+In **Step 1 — Access key best practices & alternatives**, AWS asks why you need an access key. Pick **Other** (the bottom option) — none of the other use cases match a third-party SMTP-replacement service. Click **Next**.
+
+![Access key use case — Other → Next](/screenshots/connections/ses/Screenshot-8.png)
+
+</div>
+
+<div class="step" data-step="10">
+
+### (Optional) set a description tag
+
+**Step 2 — Set description tag** is optional. You can leave it blank or note something like `SendGrail WordPress`. Click **Create access key**.
+
+![Set description tag → Create access key](/screenshots/connections/ses/Screenshot-9.png)
+
+</div>
+
+<div class="step" data-step="11">
+
+### Download the access keys
+
+**Step 3 — Retrieve access keys** shows the **Access key** and **Secret access key**. The secret is hidden by default — click **Show** to reveal it, then click **Download .csv file** to save both.
+
+![Retrieve access keys — Download .csv](/screenshots/connections/ses/Screenshot-10.png)
+
+::: warning Save them now
+This is the **only time** AWS will show you the secret access key. If you lose it, you'd have to delete the access key and create a new one. The CSV download is the safest route.
+:::
+
+</div>
+
+<div class="step" data-step="12">
+
+### Open Service Quotas
+
+By default, SES is in **sandbox mode**: 200 emails per 24 hours, only to verified addresses. To raise that, you increase the SES *Sending quota* via AWS Service Quotas.
+
+In the top-right account dropdown, click **Service Quotas**.
+
+![Account menu → Service Quotas](/screenshots/connections/ses/Screenshot-11.png)
+
+</div>
+
+<div class="step" data-step="13">
+
+### Find Amazon SES quotas
+
+In the Service Quotas dashboard, the right-hand **Manage quotas** panel has a service search field. Type **Amazon Simple Email Service** and click **View quotas**.
+
+![Service Quotas — Manage quotas → Amazon SES → View quotas](/screenshots/connections/ses/Screenshot-12.png)
+
+::: warning Region matters here too
+Service Quotas are region-scoped — confirm the region selector (top-right) matches the region where you set up SES. A quota increase in `us-east-1` doesn't help an SES setup in `eu-west-1`.
+:::
+
+</div>
+
+<div class="step" data-step="14">
+
+### Pick the Sending quota
+
+The Amazon SES quotas table lists three entries: **Sending quota**, **Sending rate**, and **Tenant count**. Click **Sending quota** (the daily-emails limit).
+
+![Amazon SES quotas — click Sending quota](/screenshots/connections/ses/Screenshot-13.png)
+
+</div>
+
+<div class="step" data-step="15">
+
+### Request the increase
+
+The Sending quota detail page shows your current limit (200 per 24 hours). Click **Request increase at account level** in the top-right.
+
+![Sending quota → Request increase at account level](/screenshots/connections/ses/Screenshot-14.png)
+
+</div>
+
+<div class="step" data-step="16">
+
+### Submit the increase
+
+In the **Request quota increase** modal, enter the new daily quota you want (e.g. `500`, `5000`, `50000`) under **Increase quota value**. Click **Request**.
+
+![Request quota increase — enter value → Request](/screenshots/connections/ses/Screenshot-15.png)
+
+::: info How long approvals take
+Small increases (under ~1,000/day) often auto-approve within minutes. Larger ones go to AWS Support — typically approved within 24 hours if your use case is clear (transactional emails, opted-in recipients, bounce/complaint handling). State all three in the description.
+:::
+
+</div>
+
+<div class="step" data-step="17">
+
+### Add the connection in SendGrail
+
+WordPress admin → **SendGrail → Connections → Add Connection** → pick **Amazon SES**.
+
+Fill in:
+- **Connection Name:** `Amazon SES`.
+- **AWS Region:** the region you set up SES in (e.g. `us-east-1`, `ap-south-1`). The host auto-fills.
+- **From Email:** an address on your verified domain (or the verified email itself).
+- **From Name:** display name shown to recipients.
+- **Access Key:** the `AKIA...` value from the CSV in step 11.
+- **Secret Key:** the secret access key from the CSV in step 11.
+
+Click **Save**.
+
+</div>
+
+<div class="step" data-step="18">
+
+### Test
+
+**SendGrail → Test Email** → pick the SES connection → send.
+
+If your account is still in sandbox mode (quota increase pending), send to a *verified* address (yourself). Once the quota increase is approved, you can send to anyone.
 
 </div>
 
@@ -173,38 +252,39 @@ Click **Save**.
 
 ### `MessageRejected: Email address is not verified`
 
-You're still in SES sandbox mode and trying to send to an unverified recipient. Either verify the recipient address (Identities → Create identity → Email), OR request production access (step 5).
+You're still in sandbox mode and trying to send to an unverified recipient. Either verify the recipient address (Identities → Create identity → Email), or wait for your quota-increase request (steps 12–16) to be approved.
 
-### `554 Authentication failed` or `535 incorrect username/password`
+### `InvalidClientTokenId` / `SignatureDoesNotMatch`
 
-The SMTP credentials in your connection don't match. SMTP credentials are not IAM access keys — they're a separate value pair generated through the SES "Create SMTP credentials" workflow. Re-generate them in step 4.
+Your Access Key or Secret Access Key is wrong, or you're hitting an SES endpoint in a different region than the IAM user was scoped against. Re-check the AWS Region setting on the connection — it must match the region you used during setup.
 
 ### `Could not connect to host: email-smtp.us-east-1.amazonaws.com`
 
-The region in your connection doesn't match your SES setup. If you verified your domain in `us-west-2` but the connection points to `us-east-1`, AWS will refuse the SMTP login. Edit the connection → set the correct **Region** → save.
+Old config still pointing at SMTP. SendGrail's SES integration uses the API; this error usually means the connection has a stale host override. Re-save the connection and let SendGrail rebuild the endpoint from the Region setting.
 
-### Production access denied
+### Production quota request denied
 
 AWS denies vague or marketing-heavy use cases. Re-submit with:
-- Clear description of *what* emails you'll send (e.g. "WooCommerce order confirmations and password resets")
-- Confirm you have opt-in confirmation for marketing emails
-- Mention your bounce/complaint handling process
 
-### Bounces / complaints
+- A clear description of *what* you'll send (e.g. *"WooCommerce order confirmations and password reset emails"*).
+- Confirmation that marketing recipients are opted-in.
+- A bounce/complaint handling plan (e.g. *"SES SNS notifications hooked into our list cleanup process"*).
 
-SES tracks bounce + complaint rates. If they exceed 5% (bounce) or 0.1% (complaint), AWS will pause your account. Configure SNS topics for bounce notifications and clean your list regularly.
+### Bounces / complaints climbing
+
+SES tracks bounce + complaint rates. Above 5% bounces or 0.1% complaints, AWS pauses your account. Configure SNS topics for bounce notifications and clean your list regularly.
 
 ## Cost reference
 
-- **First 62,000 emails/month** from EC2: free.
+- **First 62,000 emails/month** (from EC2 or sent via the SES API): free.
 - After that: **$0.10 per 1,000 emails**.
-- **Inbound:** $0.10 per 1,000 emails received.
+- **Inbound:** $0.10 per 1,000 received.
 - **Attachments:** $0.12 per GB transferred.
 
 For most WordPress sites, SES is effectively free.
 
 ## What's next
 
-- **[Email Routing](/features/email-routing)** — route specific email types (e.g. transactional vs marketing) through different SES configurations.
+- **[Email Routing](/features/email-routing)** — route specific email types (transactional vs marketing) through different SES configurations.
 - **[Failure Alerts](/features/failure-alerts)** — get notified if SES bounces start spiking.
 - **[Test & Simulate](/features/test-simulate)** — preview which emails go through SES without actually sending.

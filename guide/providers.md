@@ -137,38 +137,6 @@ Create SMTP credentials from the SMTP2GO dashboard under **Settings > SMTP Users
 
 ---
 
-### Mailtrap
-
-| Setting     | Value                                    |
-|-------------|------------------------------------------|
-| Host        | `live.smtp.mailtrap.io` (production) or `sandbox.smtp.mailtrap.io` (testing) |
-| Port        | `587`                                    |
-| Encryption  | TLS                                      |
-| Username    | Your Mailtrap SMTP username              |
-| Password    | Your Mailtrap SMTP password              |
-
-::: tip
-Mailtrap offers two environments. Use `live.smtp.mailtrap.io` for production email delivery and `sandbox.smtp.mailtrap.io` for development and testing. The sandbox catches all emails without delivering them to real recipients.
-:::
-
----
-
-### Zoho Mail
-
-| Setting     | Value                   |
-|-------------|-------------------------|
-| Host        | `smtp.zoho.com`         |
-| Port        | `587`                   |
-| Encryption  | TLS                     |
-| Username    | Your full Zoho email    |
-| Password    | Your password or App Password |
-
-::: warning
-If two-factor authentication is enabled on your Zoho account, you must generate an **App Password** from **Zoho Account > Security > App Passwords**. Your regular password will not work with 2FA active.
-:::
-
----
-
 ### Brevo (formerly Sendinblue)
 
 | Setting     | Value                          |
@@ -271,9 +239,6 @@ Use the Custom SMTP option to connect to any SMTP server not listed above. All f
 | Mandrill               | `smtp.mandrillapp.com`                | `587`  | TLS        |
 | Elastic Email          | `smtp.elasticemail.com`               | `2525` | TLS        |
 | SMTP2GO                | `mail.smtp2go.com`                    | `2525` | TLS        |
-| Mailtrap (Production)  | `live.smtp.mailtrap.io`               | `587`  | TLS        |
-| Mailtrap (Sandbox)     | `sandbox.smtp.mailtrap.io`            | `587`  | TLS        |
-| Zoho Mail              | `smtp.zoho.com`                       | `587`  | TLS        |
 | Brevo                  | `smtp-relay.brevo.com`                | `587`  | TLS        |
 | Netcore Email          | `smtp.netcorecloud.net`               | `587`  | TLS        |
 | SparkPost              | `smtp.sparkpostmail.com`              | `587`  | TLS        |

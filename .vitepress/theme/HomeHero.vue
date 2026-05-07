@@ -131,7 +131,7 @@
       <div class="sg-features__header">
         <span class="sg-features__label">Integrations</span>
         <h2 class="sg-features__title">Works with your favorite SMTP service</h2>
-        <p class="sg-features__subtitle">Pre-configured settings for 17 providers. Or bring your own SMTP server.</p>
+        <p class="sg-features__subtitle">Pre-configured settings for 16 providers. Or bring your own SMTP server.</p>
       </div>
       <div class="sg-providers__grid">
         <div v-for="p in providerList" :key="p.name" class="sg-providers__card">
@@ -231,7 +231,6 @@ const providerList = [
   { name: 'Mandrill', detail: 'Mailchimp' },
   { name: 'Elastic Email', detail: 'Transactional' },
   { name: 'SMTP2GO', detail: 'Transactional' },
-  { name: 'Mailtrap', detail: 'Testing & Live' },
   { name: 'Zoho Mail', detail: 'Zoho Suite' },
   { name: 'Yahoo', detail: 'Yahoo Mail' },
   { name: 'Netcore', detail: 'Email Intelligence' },

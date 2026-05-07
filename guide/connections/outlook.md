@@ -41,99 +41,121 @@ Both flows use the same SendGrail connection setup at the end — only the **Sup
 
 <div class="step" data-step="1">
 
-### Register an Azure AD app
+### Open App registrations
 
-Sign into [portal.azure.com](https://portal.azure.com) and search for **App registrations** → **+ New registration**.
+Sign into [portal.azure.com](https://portal.azure.com). In the top search bar type **app registrations** and click the **App registrations** result under **Services**.
 
-![Azure portal — App registrations](/screenshots/connections/outlook/Screenshot-1.png)
-
-Fill in:
-- **Name:** SendGrail Outlook (or anything sensible)
-- **Supported account types** — pick based on your account type:
-  - **Personal Outlook.com / Hotmail:** *Accounts in any organizational directory and personal Microsoft accounts (e.g. Skype, Xbox)*
-  - **Microsoft 365 business:** *Accounts in this organizational directory only* (single tenant) — or the multi-tenant option if you'll authorize multiple tenants
-- **Redirect URI** — select **Web** as the platform and paste the redirect URI shown in your SendGrail connection form.
-
-Click **Register**.
+![Azure portal search — App registrations](/screenshots/connections/outlook/Screenshot-1.png)
 
 </div>
 
 <div class="step" data-step="2">
 
-### Copy the Application (client) ID
+### Start a new registration
 
-On the new app's overview page, copy the **Application (client) ID**. You'll paste this into SendGrail later.
+On the App registrations page, click **+ New registration** in the top toolbar.
 
-![Application client ID](/screenshots/connections/outlook/Screenshot-2.png)
+![App registrations page — New registration](/screenshots/connections/outlook/Screenshot-2.png)
 
 </div>
 
 <div class="step" data-step="3">
 
-### Generate a client secret
+### Fill in the registration form
 
-Left nav → **Certificates & secrets → + New client secret**. Pick an expiry (24 months recommended; longer if you don't want to manage rotation) and click **Add**.
+Fill in:
+- **Name:** `SendGrail SMTP` (or anything descriptive).
+- **Supported account types** — pick based on your account type:
+  - **Personal Outlook.com / Hotmail:** *Accounts in any organizational directory and personal Microsoft accounts*.
+  - **Microsoft 365 business:** *Accounts in this organizational directory only* (single tenant), or the multi-tenant option if you'll authorize multiple tenants.
+- **Redirect URI** — select **Web** as the platform and paste the redirect URI shown in your SendGrail connection form (something like `https://yoursite.com/wp-admin/...`).
 
-![Create client secret](/screenshots/connections/outlook/Screenshot-3.png)
+Click **Register**.
 
-Copy the **Value** column **immediately**. You can't view it again after leaving the page.
-
-![Secret value displayed once](/screenshots/connections/outlook/Screenshot-4.png)
+![Register an application form filled in](/screenshots/connections/outlook/Screenshot-3.png)
 
 </div>
 
 <div class="step" data-step="4">
 
-### Configure API permissions
+### Copy the Application (client) ID
 
-Left nav → **API permissions → + Add a permission → Microsoft Graph → Delegated permissions**.
+The new app's **Overview** page opens. Copy the **Application (client) ID** — you'll paste this into SendGrail later.
 
-Search for **Mail.Send** → check it → **Add permissions**.
+The right-hand panel also shows **Client credentials → Add a certificate or secret**. Click that link to continue.
 
-![Mail.Send permission added](/screenshots/connections/outlook/Screenshot-5.png)
-
-::: tip Microsoft 365 business: grant admin consent
-For business tenants where the Mail.Send permission requires admin consent, click the **Grant admin consent for [your-org]** button at the top of the permissions list. Personal accounts don't need this — the user grants consent during sign-in.
-:::
+![App overview — Application (client) ID and Add a certificate or secret](/screenshots/connections/outlook/Screenshot-4.png)
 
 </div>
 
 <div class="step" data-step="5">
 
-### Add the connection in SendGrail
+### Start a new client secret
 
-WordPress admin → **SendGrail → Connections → Add Connection**. Pick **Outlook / Microsoft 365**.
+You're now on **Certificates & secrets**. Stay on the **Client secrets** tab and click **+ New client secret**.
 
-Fill in:
-- **Connection Name:** Outlook (or Microsoft 365 — your call)
-- **From Email:** the mailbox you want to send from
-- **From Name:** display name
-- **OAuth Client ID:** Application (client) ID from step 2
-- **OAuth Client Secret:** the secret value from step 3
-
-![SendGrail connection form for Outlook OAuth](/screenshots/connections/outlook/Screenshot-6.png)
-
-Click **Save**.
+![Certificates & secrets — New client secret](/screenshots/connections/outlook/Screenshot-5.png)
 
 </div>
 
 <div class="step" data-step="6">
 
-### Authenticate
+### Configure the secret and Add
 
-Click the **Authenticate** button on the saved connection. A Microsoft sign-in tab opens.
+In the side panel:
+- **Description:** `SendGrail SMTP Secret` (or any label).
+- **Expires:** pick a duration. 24 months is a good default; longer if you don't want to manage rotation.
 
-![Click Authenticate](/screenshots/connections/outlook/Screenshot-7.png)
+Click **Add**.
 
-Sign in with the Microsoft account you want to send from. Grant the **Send mail** permission.
-
-Microsoft redirects back to SendGrail. The connection now shows **Connected** in green and displays the linked email.
-
-![Connection shows Connected status](/screenshots/connections/outlook/Screenshot-8.png)
+![Add a client secret panel](/screenshots/connections/outlook/Screenshot-6.png)
 
 </div>
 
 <div class="step" data-step="7">
+
+### Copy the secret Value immediately
+
+Azure now lists the secret with its **Value** visible **only on this page**. Copy the Value (not the Secret ID) — once you navigate away, Azure replaces it with `••••••` and you'd have to generate a new secret.
+
+![Secret value displayed once — copy it now](/screenshots/connections/outlook/Screenshot-7.png)
+
+</div>
+
+<div class="step" data-step="8">
+
+### Add the connection in SendGrail
+
+WordPress admin → **SendGrail → Connections → Add Connection** → pick **Outlook / Microsoft 365**.
+
+Fill in:
+- **Connection Name:** `Outlook` (or `Microsoft 365`).
+- **From Email:** the mailbox you want to send from.
+- **From Name:** display name.
+- **OAuth Client ID:** Application (client) ID from step 4.
+- **OAuth Client Secret:** the secret Value from step 7.
+
+Click **Save**.
+
+</div>
+
+<div class="step" data-step="9">
+
+### Authenticate
+
+Click the **Authenticate** button on the saved connection. A Microsoft sign-in tab opens. Sign in with the mailbox account, then approve the requested permissions (**Send mail**, **Read your profile**, **Maintain access**).
+
+![Microsoft consent screen — Send mail permission](/screenshots/connections/outlook/Screenshot-8.png)
+
+Click **Accept**. Microsoft redirects back to SendGrail and the connection flips to **Connected**.
+
+::: tip Microsoft 365 business: admin consent
+On business tenants that restrict user consent, the user can't accept the permissions on their own. In that case go to Azure → your app → **API permissions → + Add a permission → Microsoft Graph → Delegated permissions → Mail.Send**, then click **Grant admin consent for [your-org]**. Personal Outlook accounts don't need this.
+:::
+
+</div>
+
+<div class="step" data-step="10">
 
 ### Test it
 

@@ -15,7 +15,7 @@
 </div>
 
 ::: tip Want OAuth instead?
-For better security and no 2FA dependency, use the [Gmail OAuth guide](/guide/connections/gmail-oauth). OAuth setup takes longer but doesn't require an App Password and rotates tokens automatically.
+For better security and no 2FA dependency, use the [Google Workspace / Gmail OAuth guide](/guide/connections/google-workspace). OAuth setup takes longer but doesn't require an App Password and rotates tokens automatically. Works for both Workspace and personal `@gmail.com` accounts.
 :::
 
 ## Quick Reference
@@ -54,6 +54,8 @@ Type a name for this app — anything works, e.g. **"SendGrail WordPress"** — 
 
 Google displays a 16-character password. **Copy it now** — you can't view it again after closing this dialog.
 
+![Generated app password dialog showing the 16-character password](/screenshots/connections/gmail/2.png)
+
 </div>
 
 <div class="step" data-step="2">
@@ -77,8 +79,6 @@ Pick **Gmail** from the provider grid. SendGrail pre-fills the host, port, and e
 | **From Name** | Display name shown to recipients (e.g. your name or site name) |
 | **Username** | The same Gmail address |
 | **Password** | The 16-character App Password from step 1 (no spaces) |
-
-![Gmail connection form filled in](/screenshots/connections/gmail/2.png)
 
 ::: info Why "App Password" not regular password?
 Google blocks SMTP authentication using regular passwords for any account with 2FA enabled. App Passwords are 16-character tokens scoped to one app and revocable independently — much safer than your account password.
