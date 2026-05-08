@@ -42,6 +42,13 @@
   letter-spacing: -0.02em;
 }
 
+.VPNavBarTitle .VPImage,
+.VPNavBarTitle img {
+  height: 36px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
 /* Unify navbar background across the title (sidebar-aligned) section
    and the content section. By default VP paints the title block with
    the sidebar's bg color, leaving a visible seam at the sidebar edge.

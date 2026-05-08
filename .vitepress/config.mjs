@@ -12,8 +12,8 @@ export default defineConfig({
   ],
   cleanUrls: true,
   themeConfig: {
-    logo: '/logo.svg',
-    siteTitle: 'SendGrail',
+    logo: { light: '/logo-wordmark.svg', dark: '/logo-wordmark-dark.svg' },
+    siteTitle: false,
     nav: [
       { text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
       { text: 'Connections', link: '/guide/connections/', activeMatch: '/guide/connections/' },

@@ -8,7 +8,6 @@ description: Documentation for SendGrail, the WordPress plugin that fixes email 
 
 <header class="docs-home__head">
   <div class="docs-home__brand">
-    <img src="/logo.svg" alt="" width="56" height="56" />
     <div>
       <h1 class="docs-home__title">SendGrail Documentation</h1>
       <p class="docs-home__tagline">Stop losing emails. Send through 18+ SMTP / API providers, route them by rule, log every send, and get alerts when delivery fails.</p>
