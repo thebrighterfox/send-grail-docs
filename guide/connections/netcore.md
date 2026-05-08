@@ -1,7 +1,7 @@
 # Netcore Email
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/netcore.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/netcore.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Netcore Email</h2>
     <p class="conn-hero__sub">Customer engagement platform's email API. Strong analytics + AI-driven send-time optimization.</p>

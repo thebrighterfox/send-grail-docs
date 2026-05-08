@@ -1,7 +1,7 @@
 # Mailgun
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/mailgun.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/mailgun.jpg" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Mailgun</h2>
     <p class="conn-hero__sub">Sinch's email API with detailed analytics, webhooks, and a generous free trial. Region-aware (US or EU).</p>

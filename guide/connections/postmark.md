@@ -1,7 +1,7 @@
 # Postmark
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/postmark.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/postmark.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Postmark</h2>
     <p class="conn-hero__sub">ActiveCampaign's transactional email service. Known for raw speed and excellent inbox placement. Per-Server API tokens.</p>

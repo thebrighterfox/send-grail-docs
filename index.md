@@ -58,21 +58,21 @@ description: Documentation for SendGrail, the WordPress plugin that fixes email 
   </div>
   <div class="docs-providers-strip__grid">
     <a href="/guide/connections/google-workspace" title="Gmail"><img src="/provider-icons/gmail.svg" alt="Gmail" /></a>
-    <a href="/guide/connections/outlook" title="Outlook"><img src="/provider-icons/outlook.svg" alt="Outlook" /></a>
+    <a href="/guide/connections/outlook" title="Outlook"><img src="/provider-icons/outlook.png" alt="Outlook" /></a>
     <a href="/guide/connections/sendgrid" title="SendGrid"><img src="/provider-icons/sendgrid.svg" alt="SendGrid" /></a>
-    <a href="/guide/connections/mailgun" title="Mailgun"><img src="/provider-icons/mailgun.svg" alt="Mailgun" /></a>
-    <a href="/guide/connections/amazon-ses" title="Amazon SES"><img src="/provider-icons/amazonses.svg" alt="Amazon SES" /></a>
-    <a href="/guide/connections/postmark" title="Postmark"><img src="/provider-icons/postmark.svg" alt="Postmark" /></a>
-    <a href="/guide/connections/brevo" title="Brevo"><img src="/provider-icons/brevo.svg" alt="Brevo" /></a>
-    <a href="/guide/connections/mandrill" title="Mandrill"><img src="/provider-icons/mandrill.svg" alt="Mandrill" /></a>
-    <a href="/guide/connections/sparkpost" title="SparkPost"><img src="/provider-icons/sparkpost.svg" alt="SparkPost" /></a>
-    <a href="/guide/connections/elastic-email" title="Elastic Email"><img src="/provider-icons/elasticemail.svg" alt="Elastic Email" /></a>
-    <a href="/guide/connections/smtp2go" title="SMTP2GO"><img src="/provider-icons/smtp2go.svg" alt="SMTP2GO" /></a>
-    <a href="/guide/connections/mailjet" title="Mailjet"><img src="/provider-icons/mailjet.svg" alt="Mailjet" /></a>
-    <a href="/guide/connections/zoho" title="Zoho Mail"><img src="/provider-icons/zoho.svg" alt="Zoho Mail" /></a>
-    <a href="/guide/connections/sendlayer" title="SendLayer"><img src="/provider-icons/sendlayer.svg" alt="SendLayer" /></a>
-    <a href="/guide/connections/resend" title="Resend"><img src="/provider-icons/resend.svg" alt="Resend" /></a>
-    <a href="/guide/connections/netcore" title="Netcore Email"><img src="/provider-icons/netcore.svg" alt="Netcore Email" /></a>
+    <a href="/guide/connections/mailgun" title="Mailgun"><img src="/provider-icons/mailgun.jpg" alt="Mailgun" /></a>
+    <a href="/guide/connections/amazon-ses" title="Amazon SES"><img src="/provider-icons/amazonses.png" alt="Amazon SES" /></a>
+    <a href="/guide/connections/postmark" title="Postmark"><img src="/provider-icons/postmark.png" alt="Postmark" /></a>
+    <a href="/guide/connections/brevo" title="Brevo"><img src="/provider-icons/brevo.png" alt="Brevo" /></a>
+    <a href="/guide/connections/mandrill" title="Mandrill"><img src="/provider-icons/mandrill.png" alt="Mandrill" /></a>
+    <a href="/guide/connections/sparkpost" title="SparkPost"><img src="/provider-icons/sparkpost.jpg" alt="SparkPost" /></a>
+    <a href="/guide/connections/elastic-email" title="Elastic Email"><img src="/provider-icons/elasticemail.png" alt="Elastic Email" /></a>
+    <a href="/guide/connections/smtp2go" title="SMTP2GO"><img src="/provider-icons/smtp2go.jpg" alt="SMTP2GO" /></a>
+    <a href="/guide/connections/mailjet" title="Mailjet"><img src="/provider-icons/mailjet.png" alt="Mailjet" /></a>
+    <a href="/guide/connections/zoho" title="Zoho Mail"><img src="/provider-icons/zoho.png" alt="Zoho Mail" /></a>
+    <a href="/guide/connections/sendlayer" title="SendLayer"><img src="/provider-icons/sendlayer.png" alt="SendLayer" /></a>
+    <a href="/guide/connections/resend" title="Resend"><img src="/provider-icons/resend.png" alt="Resend" /></a>
+    <a href="/guide/connections/netcore" title="Netcore Email"><img src="/provider-icons/netcore.png" alt="Netcore Email" /></a>
     <a href="/guide/connections/custom-smtp" title="Other SMTP"><img src="/provider-icons/custom-smtp.svg" alt="Other SMTP" /></a>
   </div>
 </section>

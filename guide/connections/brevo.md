@@ -1,7 +1,7 @@
 # Brevo (formerly Sendinblue)
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/brevo.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/brevo.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Brevo</h2>
     <p class="conn-hero__sub">Email + SMS marketing platform with a generous free tier (300 emails/day forever). Formerly known as Sendinblue.</p>

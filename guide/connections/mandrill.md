@@ -1,7 +1,7 @@
 # Mandrill (Mailchimp Transactional)
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/mandrill.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/mandrill.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Mailchimp Transactional (Mandrill)</h2>
     <p class="conn-hero__sub">Mailchimp's paid transactional email add-on. Requires an active Mailchimp account with the Transactional add-on enabled.</p>

@@ -1,7 +1,7 @@
 # SMTP2GO
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/smtp2go.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/smtp2go.jpg" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">SMTP2GO</h2>
     <p class="conn-hero__sub">Reliable global SMTP relay with multi-region failover. 1,000 emails/month free; uses port 2525 to avoid ISP blocking.</p>

@@ -1,7 +1,7 @@
 # SparkPost
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/sparkpost.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/sparkpost.jpg" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">SparkPost (MessageBird)</h2>
     <p class="conn-hero__sub">High-volume transactional email infrastructure. 500 emails/month free; pay-as-you-go after that.</p>

@@ -1,7 +1,7 @@
 # Mailjet
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/mailjet.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/mailjet.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Mailjet</h2>
     <p class="conn-hero__sub">Sinch's email platform with API key + secret pair authentication. 6,000 emails/month free with 200/day limit.</p>

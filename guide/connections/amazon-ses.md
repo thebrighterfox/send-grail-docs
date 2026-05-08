@@ -1,7 +1,7 @@
 # Amazon SES
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/amazonses.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/amazonses.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Amazon Simple Email Service (SES)</h2>
     <p class="conn-hero__sub">AWS's transactional email service. Cheapest at scale ($0.10 per 1,000 emails) but requires AWS account, region selection, and IAM-based credential setup.</p>

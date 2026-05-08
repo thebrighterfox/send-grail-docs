@@ -1,7 +1,7 @@
 # SendLayer
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/sendlayer.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/sendlayer.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">SendLayer</h2>
     <p class="conn-hero__sub">WordPress-focused SMTP service from the WPForms team. Designed for plug-and-play WP integration with no domain DNS hassle on the entry tier.</p>

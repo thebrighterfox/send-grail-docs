@@ -1,7 +1,7 @@
 # Outlook / Microsoft 365 (OAuth)
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/outlook.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/outlook.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Outlook / Microsoft 365 via OAuth 2.0</h2>
     <p class="conn-hero__sub">Send through any Microsoft mailbox — personal Outlook.com / Hotmail / Live or business Microsoft 365 / Office 365. OAuth-only; SMTP Basic Auth is not supported.</p>

@@ -1,7 +1,7 @@
 # Elastic Email
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/elasticemail.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/elasticemail.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Elastic Email</h2>
     <p class="conn-hero__sub">Affordable transactional + marketing platform. 100 emails/day free, pay-as-you-go pricing.</p>

@@ -1,7 +1,7 @@
 # Resend
 
 <div class="conn-hero">
-  <div class="conn-hero__icon"><img src="/provider-icons/resend.svg" alt="" /></div>
+  <div class="conn-hero__icon"><img src="/provider-icons/resend.png" alt="" /></div>
   <div class="conn-hero__body">
     <h2 class="conn-hero__title" style="margin: 0;">Resend</h2>
     <p class="conn-hero__sub">Developer-focused transactional email API with a clean dashboard and React Email integration. 3,000 emails/month free.</p>
