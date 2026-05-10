@@ -71,7 +71,7 @@ description: Documentation for SendGrail, the WordPress plugin that fixes email 
     <a href="/guide/connections/zoho" title="Zoho Mail"><img src="/provider-icons/zoho.png" alt="Zoho Mail" /></a>
     <a href="/guide/connections/sendlayer" title="SendLayer"><img src="/provider-icons/sendlayer.png" alt="SendLayer" /></a>
     <a href="/guide/connections/resend" title="Resend"><img src="/provider-icons/resend.png" alt="Resend" /></a>
-    <a href="/guide/connections/netcore" title="Netcore Email"><img src="/provider-icons/netcore.png" alt="Netcore Email" /></a>
+    <a href="/guide/connections/netcore" title="Netcore"><img src="/provider-icons/netcore.png" alt="Netcore" /></a>
     <a href="/guide/connections/custom-smtp" title="Other SMTP"><img src="/provider-icons/custom-smtp.svg" alt="Other SMTP" /></a>
   </div>
 </section>

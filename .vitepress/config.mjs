@@ -71,7 +71,7 @@ export default defineConfig({
                 { text: 'Elastic Email', link: '/guide/connections/elastic-email' },
                 { text: 'SMTP2GO', link: '/guide/connections/smtp2go' },
                 { text: 'Mailjet', link: '/guide/connections/mailjet' },
-                { text: 'Netcore Email', link: '/guide/connections/netcore' },
+                { text: 'Netcore', link: '/guide/connections/netcore' },
                 { text: 'SendLayer', link: '/guide/connections/sendlayer' },
                 { text: 'Resend', link: '/guide/connections/resend' },
               ]

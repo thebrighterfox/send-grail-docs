@@ -151,7 +151,7 @@ Find your SMTP key in the Brevo dashboard under **Settings > SMTP & API > SMTP**
 
 ---
 
-### Netcore Email
+### Netcore
 
 | Setting     | Value                          |
 |-------------|--------------------------------|
@@ -161,7 +161,7 @@ Find your SMTP key in the Brevo dashboard under **Settings > SMTP & API > SMTP**
 | Username    | Your Netcore SMTP username     |
 | Password    | Your Netcore SMTP password     |
 
-Find your SMTP credentials in the Netcore Email dashboard under **Email API > SMTP settings**.
+Find your SMTP credentials in the Netcore dashboard under **Email API > SMTP settings**.
 
 ---
 
@@ -240,7 +240,7 @@ Use the Custom SMTP option to connect to any SMTP server not listed above. All f
 | Elastic Email          | `smtp.elasticemail.com`               | `2525` | TLS        |
 | SMTP2GO                | `mail.smtp2go.com`                    | `2525` | TLS        |
 | Brevo                  | `smtp-relay.brevo.com`                | `587`  | TLS        |
-| Netcore Email          | `smtp.netcorecloud.net`               | `587`  | TLS        |
+| Netcore          | `smtp.netcorecloud.net`               | `587`  | TLS        |
 | SparkPost              | `smtp.sparkpostmail.com`              | `587`  | TLS        |
 | SendLayer              | `smtp.sendlayer.net`                  | `587`  | TLS        |
 | Mailjet                | `in-v3.mailjet.com`                   | `587`  | TLS        |

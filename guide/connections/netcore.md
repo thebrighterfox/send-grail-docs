@@ -1,9 +1,9 @@
-# Netcore Email
+# Netcore
 
 <div class="conn-hero">
   <div class="conn-hero__icon"><img src="/provider-icons/netcore.png" alt="" /></div>
   <div class="conn-hero__body">
-    <h2 class="conn-hero__title" style="margin: 0;">Netcore Email</h2>
+    <h2 class="conn-hero__title" style="margin: 0;">Netcore</h2>
     <p class="conn-hero__sub">Customer engagement platform's email API. Strong analytics + AI-driven send-time optimization.</p>
     <div class="conn-hero__meta">
       <span class="conn-meta-pill conn-meta-pill--easy">Easy</span>
@@ -29,7 +29,7 @@
 
 ### Get SMTP credentials
 
-Netcore Email dashboard → **Email API → Settings → SMTP** (or API → API Keys).
+Netcore dashboard → **Email API → Settings → SMTP** (or API → API Keys).
 
 Copy your SMTP username + password.
 
@@ -39,7 +39,7 @@ Copy your SMTP username + password.
 
 ### Add the connection in SendGrail
 
-**SendGrail → Connections → Add Connection** → pick **Netcore Email**.
+**SendGrail → Connections → Add Connection** → pick **Netcore**.
 
 Fill in: Connection Name, From Email, From Name, Username + Password from step 2. Save.
 
