@@ -2,6 +2,34 @@
 
 All notable changes to SendGrail are documented on this page.
 
+## v1.0.3
+
+*Released: 2026-05-27*
+
+### Added
+
+- Compatibility with WordPress 7.0 admin reskin.
+
+### Fixed
+
+- Inputs, selects and textareas inheriting WordPress core form styles.
+- Checkboxes, number inputs and date pickers rendering at the wrong size.
+
+## v1.0.1
+
+*Released: 2026-05-14*
+
+### Added
+
+- Authenticate step after saving an OAuth connection.
+- Per-provider "Setup guide" link on connection forms.
+
+### Fixed
+
+- Setup wizard leaking values between providers.
+- OAuth-only providers missing Client ID / Secret fields.
+- Disconnect hiding the Authentication section on OAuth-only providers.
+
 ## v1.0.0 <Badge type="tip" text="Initial Release" />
 
 *Released: 2026-05-08*
