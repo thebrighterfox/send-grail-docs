@@ -17,6 +17,7 @@ Every email captured by SendGrail records the following information:
 | **Status** | Delivery result: `sent` or `failed` |
 | **SMTP Response** | Raw response from the mail server |
 | **Error** | Error message if delivery failed |
+| **Resends** | How many times the email has been [resent](#resending-an-email), and when it last went out |
 
 ## Filtering and Search
 
@@ -61,6 +62,26 @@ Email logs can be automatically cleaned up based on a configurable retention per
 ::: tip
 Set a reasonable retention period to manage database size. For most sites, 30 to 90 days provides a good balance between auditability and storage.
 :::
+
+## Resending an Email
+
+Each row in the email log has a **Resend** button (the paper-plane icon). It sends a copy of that email -- same To recipients, subject, sender identity, and body -- through your current connection.
+
+A confirmation dialog appears first, so a stray click never sends mail.
+
+Once an email has been resent, a small counter appears on the button showing how many times it has gone out again. The exact count and the last-resent timestamp are also shown in the email's detail view.
+
+### What happens on resend
+
+- The copy goes through the normal send pipeline, so your [routing rules](/features/email-routing), active connection, and [fallback chain](/guide/fallback) all apply. It may therefore leave through a different connection than the original if your configuration has changed.
+- The resent copy is recorded as its **own new log entry**. The original entry only carries the resend counter.
+- Tracking is reset. The original email's [open](/features/open-tracking) and [click](/features/click-tracking) tracking is stripped from the copy, and the copy gets its own fresh tracking, so resending never inflates the original email's stats.
+
+### Limitations
+
+- **Body storage must be enabled.** Resend needs the stored body to rebuild the message. If the email was logged without its body, the Resend button reports that the body was not stored. See [Body Storage](#body-storage) below.
+- **Attachments are not re-attached.** The log stores only attachment file names, not the files themselves, so a resent copy goes out without them.
+- **CC and BCC recipients are not included.** Only the To addresses are stored on the log entry, so a resent copy goes only to those.
 
 ## Bulk Operations
 

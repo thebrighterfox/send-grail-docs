@@ -25,7 +25,7 @@ Controls what email data is stored and what tracking features are active.
 | Setting              | Type       | Default   | Description                                                                 |
 |----------------------|------------|-----------|-----------------------------------------------------------------------------|
 | Enable Email Logging | Toggle     | Enabled   | When enabled, SendGrail logs metadata for every email sent (recipients, subject, status, timestamps). |
-| Store Email Body     | Toggle     | Disabled  | When enabled, the full HTML/text body of each email is saved to the log. Increases database usage. |
+| Store Email Body     | Toggle     | Disabled  | When enabled, the full HTML/text body of each email is saved to the log. Required to [resend](/features/email-logging#resending-an-email) an email. Increases database usage. |
 | Retention Days       | Number     | `30`      | Number of days to keep email logs. Logs older than this are automatically deleted. Set to `0` for unlimited retention. |
 | Open Tracking        | Toggle     | Disabled  | Injects an invisible tracking pixel into HTML emails to detect when recipients open them. |
 | Click Tracking       | Toggle     | Disabled  | Rewrites links in HTML emails to pass through a tracking endpoint, recording when recipients click them. |

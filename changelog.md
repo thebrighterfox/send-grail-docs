@@ -2,6 +2,12 @@
 
 All notable changes to SendGrail are documented on this page.
 
+## Unreleased
+
+### Added
+
+- **Resend** action on each row of the [email log](/features/email-logging#resending-an-email), with a counter showing how many times an email has been sent again.
+
 ## v1.0.3
 
 *Released: 2026-05-27*
