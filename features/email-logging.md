@@ -37,7 +37,17 @@ Clicking on an individual email opens a detailed report with the following secti
 Displays the sender, recipients, subject, timestamp, connection used, and all headers.
 
 ### Delivery Status
-Shows the final delivery status along with the raw SMTP response code and message.
+Shows the final delivery status along with the SMTP response returned by your provider.
+
+Short responses (such as `250 2.0.0 OK`) are shown inline. Longer ones — API providers often return a full JSON payload — are displayed in a response viewer that:
+
+- Pretty-prints JSON with indentation
+- Shortens very long values (like an echoed copy of the email body) so the useful fields stay readable
+- Offers a **Raw** toggle to see the untouched response
+- Offers a **Copy** button to put the full raw response on your clipboard
+- Collapses tall responses behind a **Show more** control
+
+The same viewer is used for the SMTP response and headers in the quick-view dialog on the email log list.
 
 ### Open Tracking Card
 When [open tracking](/features/open-tracking) is enabled, displays the open count and first-opened timestamp.

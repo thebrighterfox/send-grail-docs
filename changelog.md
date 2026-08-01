@@ -8,6 +8,10 @@ All notable changes to SendGrail are documented on this page.
 
 - **Resend** action on each row of the [email log](/features/email-logging#resending-an-email), with a counter showing how many times an email has been sent again.
 
+### Fixed
+
+- SMTP responses and headers in the [email log](/features/email-logging#delivery-status) rendering as an unreadable wall of text. JSON responses are now pretty-printed, oversized values are shortened, and the block is collapsible with **Raw** and **Copy** controls.
+
 ## v1.0.3
 
 *Released: 2026-05-27*
