@@ -2,6 +2,17 @@
 
 All notable changes to SendGrail are documented on this page.
 
+## Unreleased
+
+### Added
+
+- Filters for registering a [custom provider](/guide/developers/custom-providers) from a companion plugin.
+
+### Fixed
+
+- The connection form ignoring providers added by a companion plugin.
+- Connection saving accepting unknown provider identifiers.
+
 ## v1.0.5
 
 *Released: 2026-08-02*

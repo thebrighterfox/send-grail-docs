@@ -94,6 +94,12 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Developers',
+          items: [
+            { text: 'Custom Providers', link: '/guide/developers/custom-providers' },
+          ]
+        },
+        {
           text: 'Alert Channels',
           items: [
             { text: 'Overview', link: '/guide/integrations/' },
