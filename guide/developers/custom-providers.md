@@ -1,6 +1,6 @@
 # Registering a Custom Provider
 
-*Requires SendGrail 1.0.6 or newer.*
+*Requires a SendGrail release that defines `SENDGRAIL_EXTENSION_API`.*
 
 SendGrail ships with 18 built-in providers. If you run your own sending service, or need a provider
 SendGrail does not cover, a companion plugin can register one through two filters. No changes to the
@@ -22,6 +22,16 @@ Both are **additive only**. Built-in providers always win on a slug collision, s
 
 Register on `plugins_loaded` at priority `1`. SendGrail caches both maps the first time they are
 read, and reads become possible as soon as `plugins_loaded` starts firing.
+
+Gate your plugin on `SENDGRAIL_EXTENSION_API` rather than `SENDGRAIL_VERSION`. It is an integer
+contract version for these filters, bumped only when they change shape, so it does not move with
+SendGrail's release numbering:
+
+```php
+if (!defined('SENDGRAIL_EXTENSION_API') || SENDGRAIL_EXTENSION_API < 1) {
+    return; // SendGrail is missing or too old — show a notice instead
+}
+```
 
 ## A minimal example
 
