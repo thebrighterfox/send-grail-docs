@@ -61,6 +61,14 @@ A chronological list of all events associated with the email: sent, opened, clic
 ### Email Body Preview
 The original email body rendered in a sandboxed iframe for safe viewing. This section only appears when body storage is enabled and the email body was captured.
 
+The preview shows the email without SendGrail's tracking: the open-tracking pixel is removed and tracked links point back to their original URLs. Opening or clicking in the preview is not counted as an open or click.
+
+Click **Copy HTML** to copy the email's HTML source, for example to send the same email to someone from another mail client. The copy has the same tracking removed as the preview.
+
+::: tip
+Tracked links are changed back using a record SendGrail keeps for 30 days. For older emails, links in the preview and in the copied HTML may still go through SendGrail's click-tracking URL.
+:::
+
 ## Retention Policy
 
 Email logs can be automatically cleaned up based on a configurable retention period.

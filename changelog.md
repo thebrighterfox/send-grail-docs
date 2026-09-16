@@ -7,6 +7,7 @@ All notable changes to SendGrail are documented on this page.
 ### Added
 
 - Filters for registering a [custom provider](/guide/developers/custom-providers) from a companion plugin.
+- **Copy HTML** on the email report preview, which copies the email's HTML with open tracking and tracked links removed.
 
 ### Changed
 
