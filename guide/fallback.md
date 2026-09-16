@@ -1,51 +1,47 @@
 # Fallback & Reliability
 
-SendGrail implements a cascading fallback system to maximize email delivery reliability. If the primary SMTP connection fails, SendGrail automatically tries alternative methods before giving up.
+If the primary connection fails, SendGrail can retry the email through one backup connection that you choose.
 
-## How the Fallback Cascade Works
+## How Fallback Works
 
 When SendGrail attempts to send an email, it follows this sequence:
 
 ```
-1. Primary SMTP Connection (Default Connection)
+1. Default Connection
    |
    |-- Success -> Email delivered, log result
-   |-- Failure --v
+   |-- Failure -> log failure --v
    |
-2. Fallback SMTP Connection (if configured)
-   |
-   |-- Success -> Email delivered, log result
-   |-- Failure --v
-   |
-3. WordPress Default Mail (if enabled in settings)
+2. Fallback Connection (if configured)
    |
    |-- Success -> Email delivered, log result
-   |-- Failure --v
+   |-- Failure -> log failure --v
    |
-4. Log failure, send admin notification (if enabled)
+3. Send failure notification (if enabled)
 ```
 
-At each stage, if sending succeeds, the process stops and the result is logged. If it fails, the next method in the cascade is attempted.
+Each attempt is logged separately. If the fallback is disabled or not set, the email fails after the first attempt.
+
+Test emails never use the fallback. A test checks one specific connection, so a fallback success would hide the real error.
 
 ## Configuring the Fallback Connection
 
 1. Navigate to **SendGrail > Settings > General**.
 2. Select a connection from the **Fallback Connection** dropdown.
-3. Optionally enable **WordPress Default Mail** as a last resort.
-4. Click **Save Settings**.
+3. Click **Save Settings**.
+
+Choose **None** to turn fallback off.
 
 ::: tip
 For maximum reliability, use a different SMTP provider for your fallback connection. If your primary provider (e.g., SendGrid) has an outage, a fallback on a different provider (e.g., Gmail) is far more likely to succeed than two connections on the same service.
 :::
 
-## WordPress Default Mail
+## Using PHP mail() as the Fallback
 
-When the **WordPress Default Mail** toggle is enabled in General settings, SendGrail will attempt to send the email using PHP's native `mail()` function as a last resort after both SMTP connections have failed.
-
-This is not recommended as a primary strategy since `mail()` has all the deliverability problems that SendGrail exists to solve. However, it can serve as an emergency fallback for critical emails like password resets.
+SendGrail no longer falls back to WordPress's default mailer on its own. If you want PHP's `mail()` function as your backup, create a **PHP** connection and select it as the fallback. Its attempts then appear in the email log like any other connection.
 
 ::: warning
-WordPress default mail relies on your server's PHP `mail()` configuration. On many shared hosting environments, this function is restricted or disabled entirely. Do not rely on it as your only fallback.
+PHP `mail()` depends on your server having a working mail program (sendmail or postfix). Many hosts restrict or disable it, and its messages often land in spam.
 :::
 
 ## Failure Notifications
@@ -56,18 +52,19 @@ When an email fails to deliver through all available methods, SendGrail can noti
 
 A natural concern is: what happens if the notification email itself fails? SendGrail handles this with specific safeguards:
 
-- Failure notification emails are sent through the **fallback connection** if one is configured, not the primary connection that just failed.
-- If no fallback connection is available, the notification is sent via **WordPress default mail** (`mail()`), bypassing the SMTP pipeline entirely.
-- If the notification email itself fails, the failure is logged but no additional notification is generated. This breaks the potential infinite loop.
+- The notification email is sent with WordPress's built-in mailer and skips SendGrail entirely, so it cannot re-enter the connection that just failed.
+- No notification email is sent when the failed email was addressed to the notification address itself.
+- A failed notification never triggers another notification.
+- Slack, Discord and Telegram alerts are sent separately, so they still arrive when email cannot be delivered.
 
 ## Logging Fallback Events
 
-Every step of the fallback cascade is recorded in the email log. Each log entry includes:
+Each attempt is recorded in the email log. Each log entry includes:
 
 - Which connection was attempted.
 - Whether it succeeded or failed.
 - The error message (if applicable).
-- Which method ultimately delivered the email (or that all methods failed).
+- Which connection delivered the email, if either one did.
 
 This gives you full visibility into delivery attempts, making it straightforward to diagnose intermittent provider issues.
 
@@ -76,4 +73,3 @@ This gives you full visibility into delivery attempts, making it straightforward
 - **Use two different providers.** A fallback on the same provider as your primary does not protect against provider-level outages.
 - **Test your fallback.** Temporarily set an invalid password on your primary connection and send a test email. Verify that the fallback picks up delivery.
 - **Monitor failure notifications.** If you start receiving frequent failure alerts, investigate the primary connection rather than relying on the fallback long-term.
-- **Keep WordPress default mail as a last resort.** Enable it for critical emails, but do not depend on it for reliable delivery.

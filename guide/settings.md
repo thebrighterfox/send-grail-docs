@@ -11,8 +11,7 @@ Core settings that control how SendGrail handles outgoing email.
 | Setting              | Type       | Default   | Description                                                                 |
 |----------------------|------------|-----------|-----------------------------------------------------------------------------|
 | Default Connection   | Select     | None      | The SMTP connection used for all outgoing emails. All `wp_mail()` calls route through this connection. |
-| Fallback Connection  | Select     | None      | A backup SMTP connection used when the default connection fails.            |
-| WordPress Default Mail | Toggle  | Disabled  | If enabled, SendGrail falls back to PHP `mail()` when both the default and fallback SMTP connections fail. |
+| Fallback Connection  | Select     | None      | A backup connection used when the default connection fails. See [Fallback & Reliability](/guide/fallback). |
 
 ::: tip
 You must have at least one saved connection before you can select a default. See [Getting Started](/guide/getting-started) to create your first connection.
@@ -50,7 +49,7 @@ Configure alerts and scheduled reports.
 | Summary Email        | Email      | Admin email | The email address that receives the weekly summary. Defaults to the WordPress admin email. |
 
 ::: tip
-Failure alert notifications are sent through the fallback connection (if configured) or WordPress default mail to avoid a loop where the notification itself fails through the same broken connection.
+Failure notification emails are sent with WordPress's built-in mailer, skipping SendGrail, so a notification cannot fail through the same broken connection.
 :::
 
 ## Advanced

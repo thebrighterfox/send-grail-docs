@@ -41,7 +41,7 @@ Receive a scheduled email summary with delivery statistics, failure counts, and 
 
 ### Fallback Reliability
 
-Configure a backup SMTP connection. If your primary provider fails, SendGrail automatically tries the fallback connection before resorting to WordPress default mail.
+Choose a backup connection. If your primary provider fails, SendGrail automatically retries the email through it.
 
 ## Requirements
 
