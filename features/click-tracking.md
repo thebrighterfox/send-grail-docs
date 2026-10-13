@@ -4,38 +4,48 @@ Click tracking monitors which links recipients click in your emails. When enable
 
 ## How It Works
 
-1. **Link rewriting** -- All `<a href>` links in HTML emails are rewritten to point to a tracking URL on your WordPress site.
+1. **Link rewriting** -- Every `http://` / `https://` link in an HTML email is rewritten to point to a tracking URL on your WordPress site.
 
 2. **Tracking URL format**:
    ```
-   /wp-json/sendgrail/v2/t/click/{tracking_id}/{link_hash}
+   /wp-json/sendgrail/v2/t/click/{tracking_id}?u={destination}&s={signature}
    ```
    - `tracking_id` -- The unique UUID assigned to the email
-   - `link_hash` -- The first 12 characters of the MD5 hash of the original URL
+   - `u` -- The original destination URL (base64url-encoded)
+   - `s` -- A signature made with your site's secret keys, so the endpoint only redirects to links your site actually sent (it cannot be used as an open redirect)
 
-3. **URL map storage** -- A mapping of link hashes to original URLs is stored in a WordPress transient with a **30-day TTL**.
+3. **No expiry** -- The destination travels inside the link itself, so tracked links keep working however old the email is, even after its log entry has been deleted by the retention policy.
 
 4. **Click handling** -- When a recipient clicks a tracked link:
    - The click event is recorded (IP, User-Agent, original URL, timestamp)
-   - A **302 redirect** sends the user to the original destination URL
+   - A **302 redirect** sends the user to the original destination URL, unchanged
 
 5. **Denormalized counts** -- For fast access, `click_count` and `first_clicked_at` are stored directly on the email log entry.
 
+## Works With Other Tracking
+
+SendGrail keeps every destination exactly as it was written, including its full query string. That means it can be stacked with other tracking layers and each one still works:
+
+- **CRM / marketing plugins** (e.g. FluentCRM) -- their own tracked links and the campaign **UTM parameters** they add are passed through untouched. The CRM still records the click and appends its UTMs.
+- **UTM parameters in your links** -- `utm_source`, `utm_medium`, `utm_campaign`, etc. reach the destination unchanged.
+- **Provider click tracking** (e.g. Resend, SendGrid, Mailgun) -- the provider wraps SendGrail's link, so a click goes provider → SendGrail → CRM → destination, and every layer records it.
+
 ## Skipped Links
 
-The following link types are **not rewritten** and are left as-is:
+The following links are **not rewritten** and are left as-is:
 
 | Link Type | Example |
 |-----------|---------|
-| Mailto links | `mailto:user@example.com` |
-| Telephone links | `tel:+1234567890` |
-| Anchor links | `#section-name` |
-| JavaScript links | `javascript:void(0)` |
+| Non-web links | `mailto:user@example.com`, `tel:+1234567890`, `#section-name`, relative paths |
+| Merge tags filled in by a provider or CRM | `%unsubscribe_url%`, `*\|UNSUB\|*`, `[[UNSUB_LINK_EN]]`, `<%asm_group_unsubscribe_raw_url%>`, <code v-pre>https://example.com/?e={{email}}</code> |
 | Already-tracked URLs | Links that already point to the SendGrail tracking endpoint |
+| Very long URLs | Links longer than about 6 KB -- they still work, they just aren't tracked |
+
+Merge tags are skipped because the provider replaces them after SendGrail hands the email off -- wrapping them would break unsubscribe and personalised links.
 
 ## Configuration
 
-Click tracking is controlled by the `enable_click_tracking` setting in the plugin settings page. Toggle it on or off as needed.
+Click tracking is controlled by the `enable_click_tracking` setting in the plugin settings page. Toggle it on or off as needed. It works on its own -- open tracking does not need to be enabled.
 
 When disabled, links in outgoing emails are not modified and no click events are recorded.
 
@@ -46,16 +56,6 @@ Click tracking data is available in the [email report view](/features/email-logg
 - **Click count** -- Total number of link clicks across all links in the email
 - **First clicked** -- Timestamp of the first recorded click
 - **Event timeline** -- Chronological list of click events showing which URL was clicked, along with IP, User-Agent, and timestamp
-
-## URL Map Expiration
-
-::: warning
-The URL map transient has a **30-day TTL**. After 30 days, tracked links in older emails will no longer redirect correctly because the original URL can no longer be resolved from the link hash. Recipients clicking expired tracked links will see an error.
-:::
-
-::: tip
-If long-term link functionality is critical, consider the retention implications of the 30-day transient window when planning your email retention policy.
-:::
 
 ## Privacy Considerations
 
