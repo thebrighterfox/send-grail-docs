@@ -2,7 +2,28 @@
 
 All notable changes to SendGrail are documented on this page.
 
-## Unreleased
+## v1.0.7
+
+*Released: 2026-11-02*
+
+### Changed
+
+- Updated the plugin framework to the latest version.
+- [Click tracking](/features/click-tracking) now works on its own. With open tracking off and click tracking on, links are now tracked; before, they were not.
+- The [test email](/features/test-simulate#test-email) is shorter and shows the SendGrail logo in Gmail and Outlook.
+- The [weekly summary](/features/weekly-summaries) email uses the same design as the test email.
+
+### Fixed
+
+- Click tracking breaking links that already carry tracking, such as UTM tags and CRM or provider click tracking.
+- Links with merge tags, such as unsubscribe links, being rewritten.
+- Tracked links expiring after 30 days. Links in emails sent before this version keep working.
+- Admin data loading on front-end pages. It now loads only on the SendGrail admin page.
+- Admin header logo alignment.
+
+## v1.0.6
+
+*Released: 2026-09-17*
 
 ### Added
 
@@ -12,11 +33,14 @@ All notable changes to SendGrail are documented on this page.
 ### Changed
 
 - Removed the **WordPress Default Mail** fallback option. To fall back to PHP `mail()`, create a PHP connection and select it as the [fallback connection](/guide/fallback).
+- Credentials are masked more thoroughly in email logs.
 
 ### Fixed
 
 - Emails addressed as `Name <email>` failing with "The to field is required" or "PHP mail() returned false". Plugins such as FluentCRM and FluentAffiliate send in this format.
 - A message with no valid recipient now fails with a clear error that names the rejected address.
+- Test email ignoring the selected connection.
+- Previewing an email counting as an open or click.
 - The connection form ignoring providers added by a companion plugin.
 - Connection saving accepting unknown provider identifiers.
 

@@ -17,7 +17,7 @@ The test email feature sends an actual email through your configured SMTP connec
 
 ### What Gets Sent
 
-The test email is an HTML-formatted message containing your custom message along with a verification notice confirming that the email was sent through SendGrail. This helps the recipient (typically yourself) confirm delivery and rendering.
+If you enter a message, it is sent exactly as written. If you leave **Message** empty, SendGrail sends a short HTML confirmation that names your site and the provider that delivered it.
 
 ### Fallback Detection
 
