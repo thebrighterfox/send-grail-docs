@@ -1,6 +1,11 @@
-# Registering a Custom Provider
+# Provider Config Reference
 
-*Requires a SendGrail release that defines `SENDGRAIL_EXTENSION_API`.*
+*Requires SendGrail 1.0.6 or later, which defines `SENDGRAIL_EXTENSION_API`.*
+
+::: tip New to provider add-ons?
+Start with [Build a Provider Add-on](/guide/developers/build-provider-addon) for a complete,
+tested example. This page is the reference for the filters and every config key.
+:::
 
 SendGrail ships with 18 built-in providers. If you run your own sending service, or need a provider
 SendGrail does not cover, a companion plugin can register one through two filters. No changes to the
@@ -97,7 +102,7 @@ class Handler extends AbstractHandler
             return MailResult::fail('Acme Mail: API key is required.');
         }
 
-        $response = wp_remote_post('https://api.acme.test/v1/send', [
+        $response = wp_safe_remote_post('https://api.acme.test/v1/send', [
             'headers' => ['Authorization' => 'Bearer ' . $apiKey],
             'body'    => wp_json_encode([
                 'from'    => $mail->From,
@@ -142,8 +147,9 @@ and a provider that fails a required rule is skipped entirely rather than partia
 | `host`, `port`, `encryption` | string / int / string | SMTP defaults; `encryption` is `tls`, `ssl` or `none` |
 | `auth`, `auto_tls`, `return_path` | bool | SMTP behaviour defaults |
 | `strip_password_whitespace` | bool | Strips spaces from pasted app passwords |
-| `constants` | array | `field => CONSTANT_NAME`; see below |
+| `constants` | array | `field => CONSTANT_NAME`, read when the connection's Credential Storage is **wp-config.php Constants**; see below |
 | `fields` | array | Per-field `label`, `hint`, `default`, `hidden`, `locked` |
+| `extra_fields` | array | Extra form controls saved with the connection; see below |
 
 ::: warning Constant names must be namespaced
 Values in `constants` are read back with `constant()`, so registered providers may only reference
@@ -156,11 +162,43 @@ dropped.
 angle brackets. Write `@your-domain`, not `@<your-domain>`.
 :::
 
-## Not yet supported
+## Extra fields
 
-`oauth`, `auth_methods` and `extra_fields` cannot be supplied by a registered provider. They require
-validation that is not in place yet, and are dropped from a registered config. Providers needing
-OAuth still have to be built into SendGrail itself.
+`extra_fields` adds controls of your own to the connection form. Each key must match
+`[a-z0-9_]`, up to 32 characters. The handler reads the saved value with
+`$this->getMeta($connection, 'key', 'default')`.
+
+```php
+'extra_fields' => [
+    'region' => [
+        'type'    => 'radio',          // 'text', 'select' or 'radio'
+        'label'   => 'Region',
+        'default' => 'us',
+        'options' => [
+            ['value' => 'us', 'label' => 'US'],
+            ['value' => 'eu', 'label' => 'EU'],
+        ],
+    ],
+],
+```
+
+| Key | Notes |
+| --- | --- |
+| `type` | `text`, `select` or `radio`. A `select` or `radio` with no options is dropped |
+| `label`, `hint`, `default` | Plain text |
+| `required` | bool |
+| `options` | Up to 64 `['value' => ..., 'label' => ...]` rows |
+| `affects` | Updates another form field when this one changes, from a `{value}` template or a `value => text` map |
+
+::: warning Treat saved values as untrusted
+Never put an extra field's value into a URL or hostname. Use it to choose from a fixed list in your
+handler, so a saved value can't redirect the request (and your API key) to another server.
+:::
+
+## OAuth providers
+
+Providers that sign in with OAuth (like Gmail or Outlook) aren't covered by this guide yet. Everything
+on this page applies to providers that authenticate with an API key or an SMTP login.
 
 ## When your plugin is deactivated
 

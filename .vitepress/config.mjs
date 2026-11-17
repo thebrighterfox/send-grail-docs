@@ -61,7 +61,6 @@ export default defineConfig({
               text: 'API providers',
               collapsed: true,
               items: [
-                { text: 'SendGrail', link: '/guide/connections/sendgrail' },
                 { text: 'SendGrid', link: '/guide/connections/sendgrid' },
                 { text: 'Mailgun', link: '/guide/connections/mailgun' },
                 { text: 'Postmark', link: '/guide/connections/postmark' },
@@ -97,7 +96,8 @@ export default defineConfig({
         {
           text: 'Developers',
           items: [
-            { text: 'Custom Providers', link: '/guide/developers/custom-providers' },
+            { text: 'Build a Provider Add-on', link: '/guide/developers/build-provider-addon' },
+            { text: 'Provider Config Reference', link: '/guide/developers/custom-providers' },
           ]
         },
         {
