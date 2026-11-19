@@ -2,6 +2,14 @@
 
 All notable changes to SendGrail are documented on this page.
 
+## v1.0.8
+
+*Released: 2026-11-19*
+
+### Fixed
+
+- PHP 8.5 "Using null as an array offset is deprecated".
+
 ## v1.0.7
 
 *Released: 2026-11-02*
